@@ -7,7 +7,12 @@ from constants import (
     DEFAULT_QUERY_URL,
     DEFAULT_MAX_COURSES_PER_SUBJECT,
     DEFAULT_MAX_TOTAL_COURSES,
-    DEFAULT_COURSE_URL
+    DEFAULT_COURSE_URL,
+    SUBJECT_CATEGORIES,
+    DISTRIBUTED_SCRAPING_ENABLED,
+    DISTRIBUTED_NODE_ID,
+    DISTRIBUTED_TOTAL_NODES,
+    DISTRIBUTED_DB_PATH
 )
 
 def parse_args():
@@ -27,6 +32,8 @@ def parse_args():
     multi_group = parser.add_argument_group('Multiple Courses Options')
     multi_group.add_argument('--subject-urls', type=str, nargs='+', default=DEFAULT_SUBJECT_URLS,
                            help='List of subject URLs to scrape')
+    multi_group.add_argument('--subject-category', type=str, choices=SUBJECT_CATEGORIES.keys(),
+                           help='使用预定义的学科类别，如：cs、math、physics等')
     multi_group.add_argument('--query-url', type=str, default=DEFAULT_QUERY_URL,
                            help=f'Search query URL (default: {DEFAULT_QUERY_URL})')
     multi_group.add_argument('--max-courses-per-subject', type=int, 
@@ -40,10 +47,30 @@ def parse_args():
     parser.add_argument('--download-dir', type=str, default=DEFAULT_DOWNLOAD_DIR,
                        help=f'Directory to save downloaded content (default: {DEFAULT_DOWNLOAD_DIR})')
     
+    # 分布式抓取选项
+    distributed_group = parser.add_argument_group('Distributed Scraping Options')
+    distributed_group.add_argument('--distributed', action='store_true', 
+                                 help='启用分布式抓取模式')
+    distributed_group.add_argument('--node-id', type=int, default=DISTRIBUTED_NODE_ID,
+                                 help=f'当前节点ID (default: {DISTRIBUTED_NODE_ID})')
+    distributed_group.add_argument('--total-nodes', type=int, default=DISTRIBUTED_TOTAL_NODES,
+                                 help=f'总节点数 (default: {DISTRIBUTED_TOTAL_NODES})')
+    distributed_group.add_argument('--db-path', type=str, default=DISTRIBUTED_DB_PATH,
+                                 help=f'分布式数据库路径 (default: {DISTRIBUTED_DB_PATH})')
+    
     return parser.parse_args()
 
 def main():
     args = parse_args()
+    
+    # 设置分布式抓取配置
+    if args.distributed:
+        # 这些值会影响constants中的值，从而影响分布式抓取器的行为
+        import constants
+        constants.DISTRIBUTED_SCRAPING_ENABLED = True
+        constants.DISTRIBUTED_NODE_ID = args.node_id
+        constants.DISTRIBUTED_TOTAL_NODES = args.total_nodes
+        constants.DISTRIBUTED_DB_PATH = args.db_path
     
     # Create download directory if it doesn't exist
     os.makedirs(args.download_dir, exist_ok=True)
@@ -61,10 +88,16 @@ def main():
             print("Failed to scrape course.")
     
     else:  # args.multi
+        # 如果指定了学科类别，使用预定义的URL
+        subject_urls = args.subject_urls
+        if args.subject_category:
+            subject_urls = SUBJECT_CATEGORIES[args.subject_category]
+            print(f"Using predefined {args.subject_category} URLs: {len(subject_urls)} URLs")
+
         # Multiple courses mode
-        from src.content_scrapper import CourseScraper
+        from src.course_scrapper import CourseScraper
         scraper = CourseScraper(
-            subject_urls=args.subject_urls,
+            subject_urls=subject_urls,
             download_dir=args.download_dir,
             query_url=args.query_url,
             max_courses_per_subject=args.max_courses_per_subject

@@ -20,13 +20,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 from constants import *
 from src.content_scrapper import ContentScraper
 from src.utils.logger import Logger
+from src.utils.distributed import DistributedScraper
 
 
 class CourseScraper:
     """Scraper that discovers and processes multiple courses."""
     
     def __init__(self, subject_urls=DEFAULT_SUBJECT_URLS, download_dir=DEFAULT_DOWNLOAD_DIR, query_url=DEFAULT_QUERY_URL, max_courses_per_subject=None):
-        self.subject_urls = subject_urls
         self.query_url = query_url
         self.max_courses_per_subject = max_courses_per_subject # Limit courses discovered per subject/query
         self.download_dir = download_dir
@@ -41,6 +41,16 @@ class CourseScraper:
         # Path for the combined content file
         self.combined_content_path = os.path.join(download_dir, "scraped_content.json")
         
+        # 添加进度文件路径
+        self.progress_file = os.path.join(download_dir, "scraper_progress.json")
+        self.courses_found_file = os.path.join(download_dir, "courses_found.json")
+        
+        # 初始化分布式抓取器
+        self.distributed = DistributedScraper(logger=self.logger)
+        
+        # 根据分布式配置决定要处理的学科URL
+        self.subject_urls = self.distributed.get_subject_urls_for_node(subject_urls)
+        
         # Prepare the final list of URLs to process
         self._urls_to_scrape = []
         if self.query_url:
@@ -51,6 +61,14 @@ class CourseScraper:
         # Initialize the browser
         self.driver = self._setup_selenium()
         
+        # 启动分布式同步线程（如果启用）
+        if DISTRIBUTED_SCRAPING_ENABLED:
+            self.distributed.start_sync()
+            self.logger.log_message("分布式抓取模式已启用，节点ID: " + str(DISTRIBUTED_NODE_ID))
+            
+        # 加载已发现的课程（如果有）
+        self._load_found_courses()
+    
     def _extract_subject_from_url(self, subject_url):
         """Extract subject name from URL, handling d=, t=, and q= parameters."""
         try:
@@ -163,20 +181,96 @@ class CourseScraper:
                             "url": url,
                             "info": course_info
                         })
+                        
+                        # 实时保存发现的课程
+                        self.courses_found.append({
+                            "title": title,
+                            "url": url,
+                            "info": course_info
+                        })
+                        self._save_found_courses()
+                        
+                        # 打印实时进度
+                        print(f"\r发现课程: {len(self.courses_found)} | 当前: {title}", end="")
             except Exception as e:
                 self.logger.log_message(f"Error extracting course data from article: {e}", level=logging.WARNING)
                 continue
         
+        print()  # 换行
         return courses
     
+    def _save_found_courses(self):
+        """实时保存发现的课程列表到文件"""
+        try:
+            with open(self.courses_found_file, 'w', encoding='utf-8') as f:
+                json.dump({
+                    "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+                    "total_courses_found": len(self.courses_found),
+                    "courses": self.courses_found
+                }, f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            self.logger.log_message(f"保存发现的课程失败: {e}", level=logging.ERROR)
+    
+    def _load_found_courses(self):
+        """加载之前发现的课程列表"""
+        if os.path.exists(self.courses_found_file):
+            try:
+                with open(self.courses_found_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    self.courses_found = data.get('courses', [])
+                    self.logger.log_message(f"加载已发现的课程: {len(self.courses_found)} 个")
+            except Exception as e:
+                self.logger.log_message(f"加载已发现的课程失败: {e}", level=logging.ERROR)
+                self.courses_found = []
+    
+    def _update_progress(self, stage, detail=None):
+        """更新并保存进度信息"""
+        progress = {
+            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+            "stage": stage,
+            "detail": detail,
+            "total_courses_found": len(self.courses_found),
+            "total_courses_processed": len(self.courses_processed),
+            "total_courses_failed": len(self.courses_failed)
+        }
+        
+        try:
+            with open(self.progress_file, 'w', encoding='utf-8') as f:
+                json.dump(progress, f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            self.logger.log_message(f"保存进度信息失败: {e}", level=logging.ERROR)
+        
+        # 打印进度条
+        processed = len(self.courses_processed)
+        failed = len(self.courses_failed)
+        total = len(self.courses_found) or 1  # 避免除以零
+        progress_percent = (processed + failed) / total * 100
+        
+        bar_length = 30
+        filled_length = int(bar_length * progress_percent / 100)
+        bar = '█' * filled_length + '░' * (bar_length - filled_length)
+        
+        print(f"\r进度: [{bar}] {progress_percent:.1f}% | 发现: {total} | 成功: {processed} | 失败: {failed}", end="")
+        if stage != "processing":
+            print()  # 只有在处理阶段结束时换行
+
     def discover_courses(self):
         """Discovers courses from the query URL and subject URLs, respecting limits."""
+        self._update_progress("discovery", "开始发现课程")
+        
+        # 如果已经有发现的课程，询问是否继续
+        if self.courses_found:
+            self.logger.log_message(f"已发现 {len(self.courses_found)} 个课程。跳过发现阶段。")
+            self._update_progress("discovery", f"跳过发现阶段，使用已有的 {len(self.courses_found)} 个课程")
+            return self.courses_found
+
         all_courses = []
 
         # Use the prepared list of URLs
-        for current_url in self._urls_to_scrape:
+        for url_index, current_url in enumerate(self._urls_to_scrape):
             subject_name = self._extract_subject_from_url(current_url)
             self.logger.log_message(f"Discovering courses for: {subject_name} ({current_url})")
+            self._update_progress("discovery", f"正在抓取 {subject_name} ({url_index+1}/{len(self._urls_to_scrape)})")
 
             # Create directory for this subject/query
             subject_dir = os.path.join(self.download_dir, subject_name)
@@ -219,6 +313,9 @@ class CourseScraper:
                 if self.max_courses_per_subject and courses_found_this_subject >= self.max_courses_per_subject:
                     continue # Move to the next subject/query URL
 
+                # 更新进度
+                self._update_progress("discovery", f"已抓取 {subject_name} 第1页，发现 {courses_found_this_subject} 个课程")
+
                 # Navigate through additional pages (up to MAX_PAGES_PER_SUBJECT)
                 current_page = 1
                 for page_num in range(2, MAX_PAGES_PER_SUBJECT + 1):
@@ -231,6 +328,7 @@ class CourseScraper:
                         )
                         next_button.click()
                         self.logger.log_message(f"Navigating to page {current_page} for {subject_name}")
+                        self._update_progress("discovery", f"正在抓取 {subject_name} 第{current_page}页")
 
                         # Wait for the new page to load
                         time.sleep(PAGE_DELAY_SECONDS)  # Reasonable delay between page loads
@@ -256,6 +354,7 @@ class CourseScraper:
                             courses_added_this_page += 1
                         
                         self.logger.log_message(f"Extracted {courses_added_this_page} courses from page {current_page} for {subject_name} (Total for this subject: {courses_found_this_subject}).")
+                        self._update_progress("discovery", f"已抓取 {subject_name} 第{current_page}页，发现 {courses_found_this_subject} 个课程")
                         
                         # Break outer loop (subjects) if limit reached
                         if self.max_courses_per_subject and courses_found_this_subject >= self.max_courses_per_subject:
@@ -274,15 +373,19 @@ class CourseScraper:
             time.sleep(COURSE_DELAY_SECONDS)
         
         # Update our discovered courses list and return it
-        self.courses_found = all_courses
-        self.logger.log_message(f"Total courses discovered across all URLs: {len(all_courses)}")
-        return all_courses
+        # 注意：我们已经在extract_courses_from_page中实时更新courses_found了
+        # self.courses_found = all_courses
+        self.logger.log_message(f"Total courses discovered across all URLs: {len(self.courses_found)}")
+        self._update_progress("discovery", f"发现阶段完成，共发现 {len(self.courses_found)} 个课程")
+        return self.courses_found
     
     def process_courses(self, max_total_courses=None):
         """Processes the discovered courses using ContentScraper, up to max_total_courses."""
         if not self.courses_found:
             self.logger.log_message("No courses to process. Run discover_courses() first.", level=logging.ERROR)
             return
+        
+        self._update_progress("processing", "开始处理课程")
         
         # Create subject directories (ensure they exist based on discovered courses)
         discovered_subjects = {c['subject'] for c in self.courses_found if 'subject' in c}
@@ -307,7 +410,13 @@ class CourseScraper:
                 self.logger.log_message(f"Skipping course at index {index}: Missing URL", level=logging.WARNING)
                 continue
             
+            # 检查此URL是否应该由当前节点处理
+            if not self.distributed.should_process_url(course_url):
+                self.logger.log_message(f"跳过课程 {course_title}：由其他节点处理")
+                continue
+            
             self.logger.log_message(f"Processing course {index+1}/{total_to_process}: {course_title}")
+            self._update_progress("processing", f"正在处理 {index+1}/{total_to_process}: {course_title}")
             
             try:
                 # Determine the appropriate subject directory
@@ -327,6 +436,8 @@ class CourseScraper:
                         "output_path": result_path
                     })
                     self.logger.log_message(f"Successfully processed course: {course_title}")
+                    # 标记为已处理成功
+                    self.distributed.mark_as_processed(course_url, success=True)
                 else:
                     self.courses_failed.append({
                         "title": course_title,
@@ -336,6 +447,8 @@ class CourseScraper:
                         "reason": "ContentScraper returned None"
                     })
                     self.logger.log_message(f"Failed to process course: {course_title}", level=logging.ERROR)
+                    # 标记为处理失败
+                    self.distributed.mark_as_processed(course_url, success=False)
             
             except Exception as e:
                 self.courses_failed.append({
@@ -346,6 +459,11 @@ class CourseScraper:
                     "reason": str(e)
                 })
                 self.logger.log_message(f"Error processing course {course_title}: {e}", level=logging.ERROR)
+                # 标记为处理失败
+                self.distributed.mark_as_processed(course_url, success=False)
+            
+            # 更新进度
+            self._update_progress("processing")
             
             # Add a significant delay between courses
             self.logger.log_message(f"Waiting {COURSE_DELAY_SECONDS} seconds before next course...")
@@ -353,6 +471,7 @@ class CourseScraper:
         
         # Save a summary report
         self._save_summary_report()
+        self._update_progress("complete", "处理完成")
         
         return {
             "total_discovered": len(self.courses_found),
@@ -430,6 +549,12 @@ class CourseScraper:
         # Note: max_courses_per_subject is set during __init__
         try:
             self.logger.log_message("=== Starting MIT OCW Course Scraper ===")
+            self._update_progress("start", "爬虫启动")
+            
+            # 打印分布式抓取信息
+            if DISTRIBUTED_SCRAPING_ENABLED:
+                stats = self.distributed.get_stats()
+                self.logger.log_message(f"分布式抓取状态: 活跃节点 {stats['active_nodes']}，已处理 {stats['processed_courses']}，失败 {stats['failed_courses']}，进行中 {stats['in_progress_courses']}")
             
             # Discover courses (respecting max_courses_per_subject)
             self.discover_courses()
@@ -444,6 +569,8 @@ class CourseScraper:
             self.remove_empty_files_and_folders()
             
             self.logger.log_message("=== MIT OCW Course Scraper Complete ===")
+            self._update_progress("complete", "爬虫完成")
+            
             if result: # Check if result is not None
                 self.logger.log_message(f"Total discovered: {result['total_discovered']}")
                 self.logger.log_message(f"Successfully processed: {result['total_processed']}")
@@ -451,9 +578,18 @@ class CourseScraper:
             if combined_success:
                 self.logger.log_message(f"All content combined in: {self.combined_content_path}")
             
+            # 再次打印分布式抓取信息
+            if DISTRIBUTED_SCRAPING_ENABLED:
+                stats = self.distributed.get_stats()
+                self.logger.log_message(f"分布式抓取最终状态: 活跃节点 {stats['active_nodes']}，已处理 {stats['processed_courses']}，失败 {stats['failed_courses']}，进行中 {stats['in_progress_courses']}")
+            
             return result
         
         finally:
+            # 停止分布式同步
+            if DISTRIBUTED_SCRAPING_ENABLED:
+                self.distributed.stop_sync()
+                
             # Always close the browser
             if hasattr(self, 'driver'):
                 try:

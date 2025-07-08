@@ -18,6 +18,7 @@ class ContentScraper:
     def __init__(self, course_url, download_dir=DEFAULT_DOWNLOAD_DIR):
         self.course_url = course_url
         self.download_url = urljoin(self.course_url, "download/")
+        self.syllabus_url = urljoin(self.course_url, "pages/syllabus/")
         self.download_dir = download_dir
         self.output_path = None
         self.logger = Logger(__name__, see_time=True, console_log=True)
@@ -271,6 +272,73 @@ class ContentScraper:
         except IOError as e:
             self.logger.log_message(f"Failed to save data to {filepath}: {e}", level=logging.ERROR)
 
+    def scrape_syllabus_content(self):
+        """Scrapes content from the syllabus page."""
+        self.logger.log_message(f"Scraping syllabus content from: {self.syllabus_url}")
+        syllabus_data = {
+            "content": "",
+            "files": []
+        }
+
+        try:
+            response = requests.get(self.syllabus_url, headers=HEADERS, timeout=30)
+            # Check if page exists
+            if response.status_code == 404:
+                self.logger.log_message(f"Syllabus page not found at {self.syllabus_url}", level=logging.WARNING)
+                return syllabus_data
+                
+            response.raise_for_status()
+            soup = BeautifulSoup(response.content, "html.parser")
+            
+            # Extract main syllabus content
+            main_content = soup.find("main")
+            if main_content:
+                # Remove navigation elements
+                for nav in main_content.find_all(["nav", "footer"]):
+                    if hasattr(nav, 'decompose'):
+                        nav.decompose()
+                
+                syllabus_data["content"] = self._clean_text(main_content.get_text(separator="\n"))
+            
+            # Look for downloadable files in the syllabus page
+            resource_items = soup.find_all("div", class_="resource-item")
+            for item in resource_items:
+                link = item.find("a", href=True)
+                if not link:
+                    continue
+                    
+                file_href = link['href']
+                title_element = item.find(class_="resource-list-title")
+                title = title_element.text.strip() if title_element else "Untitled Resource"
+                
+                # Determine file type
+                file_type = "unknown"
+                if file_href.lower().endswith(".pdf"):
+                    file_type = "PDF"
+                elif file_href.lower().endswith(".docx"):
+                    file_type = "DOCX"
+                elif file_href.lower().endswith(".doc"):
+                    file_type = "DOC"
+                
+                source_url = urljoin(BASE_URL, file_href)
+                
+                syllabus_data["files"].append({
+                    "category": "Syllabus",
+                    "title": title,
+                    "type": file_type,
+                    "source_url": source_url
+                })
+                
+            self.logger.log_message(f"Found {len(syllabus_data['files'])} files in syllabus page.")
+            return syllabus_data
+        
+        except requests.exceptions.RequestException as e:
+            self.logger.log_message(f"Failed to fetch syllabus page: {e}", level=logging.ERROR)
+            return syllabus_data
+        except Exception as e:
+            self.logger.log_message(f"Error parsing syllabus page: {e}", level=logging.ERROR)
+            return syllabus_data
+
     def run(self):
         """Main execution method for the scraper."""
         self.logger.log_message("--- Content Scraper Started ---")
@@ -285,21 +353,29 @@ class ContentScraper:
         self.output_path = os.path.join(self.download_dir, self._generate_safe_filename(course_name))
         self.logger.log_message(f"Output will be saved to: {self.output_path}")
 
-        # 2. Scrape file metadata (URLs, types, etc.)
+        # 2. Scrape syllabus content
+        syllabus_data = self.scrape_syllabus_content()
+        
+        # 3. Scrape file metadata (URLs, types, etc.)
         file_metadata_list = self.scrape_file_metadata()
+        
+        # Combine files from syllabus with other files
+        file_metadata_list.extend(syllabus_data["files"])
+        
         if not file_metadata_list:
             self.logger.log_message("No file metadata found or error occurred. Saving basic course info.", level=logging.WARNING)
             final_data = {
                 "course_name": course_name,
                 "course_description": course_description,
                 "topics": topics,
+                "syllabus_content": syllabus_data["content"],
                 "files": []
             }
             self._save_data(final_data, self.output_path)
             self.logger.log_message("--- Content Scraper Finished (No files processed) ---")
             return self.output_path  # Return the output path even if no files were found
 
-        # 3. Load existing data or initialize
+        # 4. Load existing data or initialize
         existing_data = self._load_existing_data(self.output_path)
         if existing_data and isinstance(existing_data.get('files'), list):
             self.logger.log_message(f"Loaded existing data from {self.output_path}")
@@ -308,6 +384,7 @@ class ContentScraper:
             final_data['course_name'] = course_name
             final_data['course_description'] = course_description
             final_data['topics'] = topics
+            final_data['syllabus_content'] = syllabus_data["content"]
             # Update file list based on current scrape
             existing_files_map = {f['source_url']: f for f in final_data['files']}
             current_files_processed = []
@@ -327,6 +404,7 @@ class ContentScraper:
                 "course_name": course_name,
                 "course_description": course_description,
                 "topics": topics,
+                "syllabus_content": syllabus_data["content"],
                 "files": file_metadata_list # Initially no content key
             }
             # Save the initial structure immediately
