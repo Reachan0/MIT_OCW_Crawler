@@ -45,16 +45,32 @@ class CourseScraper:
         self.progress_file = os.path.join(download_dir, "scraper_progress.json")
         self.courses_found_file = os.path.join(download_dir, "courses_found.json")
         
+        # 调试打印：初始传入的URLs
+        print("Debug - Original subject_urls received by CourseScraper:")
+        for url in subject_urls:
+            print(f"  - {url}")
+        
         # 初始化分布式抓取器
         self.distributed = DistributedScraper(logger=self.logger)
         
         # 根据分布式配置决定要处理的学科URL
         self.subject_urls = self.distributed.get_subject_urls_for_node(subject_urls)
         
+        # 调试打印：分布式处理后的URLs
+        print("Debug - After distributed processing, subject_urls:")
+        for url in self.subject_urls:
+            print(f"  - {url}")
+        
         # Prepare the final list of URLs to process
         self._urls_to_scrape = []
-        if self.query_url:
+        
+        # 检查是否使用自定义subject_urls（非默认值）
+        using_custom_urls = subject_urls != DEFAULT_SUBJECT_URLS
+        
+        # 只有在使用默认subject_urls时，才添加query_url
+        if not using_custom_urls and self.query_url:
             self._urls_to_scrape.append(self.query_url)
+            
         self._urls_to_scrape.extend(self.subject_urls)
         self.logger.log_message(f"URLs to scrape: {self._urls_to_scrape}")
 

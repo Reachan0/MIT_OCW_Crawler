@@ -214,7 +214,12 @@ class DistributedScraper:
         Returns:
             list: 当前节点应处理的学科URL列表
         """
+        print("Debug - Inside distributed.py, received URLs:")
+        for i, url in enumerate(all_subject_urls):
+            print(f"  - [{i}] {url}")
+            
         if not DISTRIBUTED_SCRAPING_ENABLED or self.total_nodes <= 1:
+            print(f"Debug - Distributed mode not enabled or total_nodes={self.total_nodes}, returning all URLs")
             return all_subject_urls
             
         # 按节点ID均匀分配学科
@@ -223,6 +228,10 @@ class DistributedScraper:
             if (i % self.total_nodes) + 1 == self.node_id:
                 node_urls.append(url)
                 
+        print(f"Debug - Distributed mode: node {self.node_id}/{self.total_nodes}, returning filtered URLs:")
+        for url in node_urls:
+            print(f"  - {url}")
+            
         self.logger.log_message(f"节点 {self.node_id}/{self.total_nodes} 分配到 {len(node_urls)}/{len(all_subject_urls)} 个学科")
         return node_urls
         

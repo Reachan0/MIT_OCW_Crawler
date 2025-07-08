@@ -6,16 +6,11 @@ DEFAULT_DOWNLOAD_DIR = "downloads"
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 DEFAULT_OUTPUT_FILENAME = "course_metadata.json"
 DEFAULT_SUBJECT_URLS = [
-    "https://ocw.mit.edu/search/?q=python"
-    "https://ocw.mit.edu/search/?t=Computer%20Science"
-    "https://ocw.mit.edu/search/?d=Electrical%20Engineering%20and%20Computer%20Science",
-    "https://ocw.mit.edu/search/?d=Mathematics",
-]
-DEFAULT_SUBJECT_URLS = [
+    "https://ocw.mit.edu/search/?q=python",
+    "https://ocw.mit.edu/search/?t=Computer%20Science",
     "https://ocw.mit.edu/search/?d=Electrical%20Engineering%20and%20Computer%20Science",
     "https://ocw.mit.edu/search/?d=Mathematics"
 ]
-
 
 DEFAULT_QUERY_URL = "https://ocw.mit.edu/search/?q=python"
 DEFAULT_MAX_COURSES_PER_SUBJECT = 5

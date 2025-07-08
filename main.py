@@ -94,6 +94,12 @@ def main():
             subject_urls = SUBJECT_CATEGORIES[args.subject_category]
             print(f"Using predefined {args.subject_category} URLs: {len(subject_urls)} URLs")
 
+        # 调试打印
+        print("Debug - Subject URLs to be passed to CourseScraper:")
+        for url in subject_urls:
+            print(f"  - {url}")
+        print(f"Debug - Query URL: {args.query_url}")
+
         # Multiple courses mode
         from src.course_scrapper import CourseScraper
         scraper = CourseScraper(
