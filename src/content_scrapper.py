@@ -373,10 +373,15 @@ class ContentScraper:
             }
             self._save_data(final_data, self.output_path)
             self.logger.log_message("--- Content Scraper Finished (No files processed) ---")
-            return self.output_path  # Return the output path even if no files were found
+            return {
+                "path": self.output_path,
+                "content_processed": False
+            }  # 返回包含路径和处理状态的字典
 
         # 4. Load existing data or initialize
         existing_data = self._load_existing_data(self.output_path)
+        content_processed = False  # 跟踪是否处理了新内容
+        
         if existing_data and isinstance(existing_data.get('files'), list):
             self.logger.log_message(f"Loaded existing data from {self.output_path}")
             final_data = existing_data
@@ -397,6 +402,7 @@ class ContentScraper:
                 else:
                     # New file found during scrape
                     current_files_processed.append(meta_item) # Add new file, content to be extracted
+                    content_processed = True  # 发现了新文件，需要处理
             final_data['files'] = current_files_processed
         else:
             self.logger.log_message("No valid existing data found. Initializing new structure.")
@@ -407,6 +413,7 @@ class ContentScraper:
                 "syllabus_content": syllabus_data["content"],
                 "files": file_metadata_list # Initially no content key
             }
+            content_processed = True  # 新的数据结构，需要处理
             # Save the initial structure immediately
             self._save_data(final_data, self.output_path)
 
@@ -442,9 +449,13 @@ class ContentScraper:
                 # Save the entire updated data immediately after processing this file
                 self._save_data(final_data, self.output_path)
                 self.logger.log_message(f"Updated and saved data for '{title}'.")
+                content_processed = True  # 处理了新内容
                 # Add delay after successful extraction/save
                 time.sleep(random.uniform(REQUEST_DELAY_MIN, REQUEST_DELAY_MAX))
 
         self.logger.log_message("--- Content Scraper Finished ---")
-        return self.output_path  # Return the output path for tracking by the multi-course scraper
+        return {
+            "path": self.output_path,
+            "content_processed": content_processed
+        }  # 返回包含路径和处理状态的字典
 

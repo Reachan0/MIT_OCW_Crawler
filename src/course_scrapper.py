@@ -15,6 +15,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.action_chains import ActionChains
 
 # Local imports
 from constants import *
@@ -339,10 +340,15 @@ class CourseScraper:
 
                     # Try to find and click the next page button
                     try:
-                        next_button = WebDriverWait(self.driver, 10).until(
-                            EC.element_to_be_clickable((By.CSS_SELECTOR, "button.next-page-button, a.next-page"))
+                        # 首先，等待按钮出现在页面代码中 (不一定可见)
+                        next_button_element = WebDriverWait(self.driver, 10).until(
+                            EC.presence_of_element_located((By.CSS_SELECTOR, "button.next-page-button, a.next-page"))
                         )
-                        next_button.click()
+
+                        # 然后，使用 ActionChains 来滚动到按钮位置并执行点击
+                        actions = ActionChains(self.driver)
+                        actions.move_to_element(next_button_element).click().perform()
+
                         self.logger.log_message(f"Navigating to page {current_page} for {subject_name}")
                         self._update_progress("discovery", f"正在抓取 {subject_name} 第{current_page}页")
 
@@ -444,9 +450,13 @@ class CourseScraper:
                 
                 # Create and run a ContentScraper for this course
                 scraper = ContentScraper(course_url=course_url, download_dir=subject_dir)
-                result_path = scraper.run()
+                result = scraper.run()
                 
-                if result_path:
+                if result:
+                    # 检查是否有新内容被处理
+                    result_path = result if isinstance(result, str) else result.get('path')
+                    content_processed = result.get('content_processed', True) if isinstance(result, dict) else True
+                    
                     self.courses_processed.append({
                         "title": course_title,
                         "url": course_url,
@@ -457,6 +467,14 @@ class CourseScraper:
                     self.logger.log_message(f"Successfully processed course: {course_title}")
                     # 标记为已处理成功
                     self.distributed.mark_as_processed(course_url, success=True)
+                    
+                    # 只有当实际处理了新内容时才等待
+                    if content_processed:
+                        # Add a significant delay between courses
+                        self.logger.log_message(f"Waiting {COURSE_DELAY_SECONDS} seconds before next course...")
+                        time.sleep(COURSE_DELAY_SECONDS)
+                    else:
+                        self.logger.log_message("Content already exists, skipping delay.")
                 else:
                     self.courses_failed.append({
                         "title": course_title,
@@ -468,6 +486,10 @@ class CourseScraper:
                     self.logger.log_message(f"Failed to process course: {course_title}", level=logging.ERROR)
                     # 标记为处理失败
                     self.distributed.mark_as_processed(course_url, success=False)
+                    
+                    # 处理失败时也等待一段时间
+                    self.logger.log_message(f"Waiting {COURSE_DELAY_SECONDS} seconds before next course...")
+                    time.sleep(COURSE_DELAY_SECONDS)
             
             except Exception as e:
                 self.courses_failed.append({
@@ -480,14 +502,14 @@ class CourseScraper:
                 self.logger.log_message(f"Error processing course {course_title}: {e}", level=logging.ERROR)
                 # 标记为处理失败
                 self.distributed.mark_as_processed(course_url, success=False)
+                
+                # 处理失败时也等待一段时间
+                self.logger.log_message(f"Waiting {COURSE_DELAY_SECONDS} seconds before next course...")
+                time.sleep(COURSE_DELAY_SECONDS)
             
             # 更新进度
             self._update_progress("processing")
             
-            # Add a significant delay between courses
-            self.logger.log_message(f"Waiting {COURSE_DELAY_SECONDS} seconds before next course...")
-            time.sleep(COURSE_DELAY_SECONDS)
-        
         # Save a summary report
         self._save_summary_report()
         self._update_progress("complete", "处理完成")
