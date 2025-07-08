@@ -315,7 +315,7 @@ class CourseScraper:
                 
                 # Add subject info and check limit
                 for course in courses_on_page:
-                    if self.max_courses_per_subject and courses_found_this_subject >= self.max_courses_per_subject:
+                    if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
                         self.logger.log_message(f"Reached max_courses_per_subject ({self.max_courses_per_subject}) for {subject_name}. Moving to next URL.", level=logging.INFO)
                         break # Stop adding courses from this page
                     course["subject"] = subject_name
@@ -326,7 +326,7 @@ class CourseScraper:
                 self.logger.log_message(f"Extracted {len(courses_on_page)} courses from initial page for {subject_name} (Total for this subject: {courses_found_this_subject}).")
 
                 # Check if we already hit the limit before trying pagination
-                if self.max_courses_per_subject and courses_found_this_subject >= self.max_courses_per_subject:
+                if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
                     continue # Move to the next subject/query URL
 
                 # 更新进度
@@ -360,7 +360,7 @@ class CourseScraper:
                         # Add subject info and check limit
                         courses_added_this_page = 0
                         for course in courses_on_page:
-                            if self.max_courses_per_subject and courses_found_this_subject >= self.max_courses_per_subject:
+                            if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
                                 self.logger.log_message(f"Reached max_courses_per_subject ({self.max_courses_per_subject}) for {subject_name} on page {current_page}. Moving to next URL.", level=logging.INFO)
                                 break # Stop adding courses from this page
                             course["subject"] = subject_name
@@ -373,7 +373,7 @@ class CourseScraper:
                         self._update_progress("discovery", f"已抓取 {subject_name} 第{current_page}页，发现 {courses_found_this_subject} 个课程")
                         
                         # Break outer loop (subjects) if limit reached
-                        if self.max_courses_per_subject and courses_found_this_subject >= self.max_courses_per_subject:
+                        if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
                            break # Stop paginating for this subject
                            
                     except (TimeoutException, NoSuchElementException) as e:
@@ -410,8 +410,11 @@ class CourseScraper:
              self._ensure_dir_exists(subject_dir)
         # subject_dirs = self._create_subject_directories() # Can remove this if dirs created based on discovered
         
-        # Limit the total number of courses to process if specified
-        courses_to_process = self.courses_found[:max_total_courses] if max_total_courses else self.courses_found
+        # Limit the total number of courses to process if specified and not None
+        courses_to_process = self.courses_found
+        if max_total_courses is not None:
+            courses_to_process = self.courses_found[:max_total_courses]
+        
         total_to_process = len(courses_to_process)
         
         self.logger.log_message(f"Starting to process {total_to_process} courses (out of {len(self.courses_found)} discovered).")

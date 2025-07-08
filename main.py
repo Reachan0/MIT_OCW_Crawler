@@ -1,5 +1,6 @@
 import argparse
 import os
+import shutil
 from src.content_scrapper import ContentScraper
 from constants import (
     DEFAULT_DOWNLOAD_DIR,
@@ -46,6 +47,8 @@ def parse_args():
     # Common arguments
     parser.add_argument('--download-dir', type=str, default=DEFAULT_DOWNLOAD_DIR,
                        help=f'Directory to save downloaded content (default: {DEFAULT_DOWNLOAD_DIR})')
+    parser.add_argument('--force-refresh', action='store_true',
+                       help='Force refresh all content - deletes existing downloaded data and progress files')
     
     # 分布式抓取选项
     distributed_group = parser.add_argument_group('Distributed Scraping Options')
@@ -63,6 +66,19 @@ def parse_args():
 def main():
     args = parse_args()
     
+    # 处理force-refresh选项 - 删除现有数据
+    if args.force_refresh:
+        print("Force refresh requested. Clearing existing data...")
+        # 删除下载目录
+        if os.path.exists(args.download_dir):
+            shutil.rmtree(args.download_dir)
+            print(f"Removed download directory: {args.download_dir}")
+        
+        # 删除分布式数据库
+        if os.path.exists(DISTRIBUTED_DB_PATH):
+            os.remove(DISTRIBUTED_DB_PATH)
+            print(f"Removed distributed database: {DISTRIBUTED_DB_PATH}")
+    
     # 设置分布式抓取配置
     if args.distributed:
         # 这些值会影响constants中的值，从而影响分布式抓取器的行为
@@ -74,6 +90,15 @@ def main():
     
     # Create download directory if it doesn't exist
     os.makedirs(args.download_dir, exist_ok=True)
+    
+    # 处理特殊的数值限制参数
+    max_total_courses = args.max_total_courses
+    if max_total_courses is not None and max_total_courses <= 0:
+        max_total_courses = None  # 0或负数表示不限制
+        
+    max_courses_per_subject = args.max_courses_per_subject
+    if max_courses_per_subject is not None and max_courses_per_subject <= 0:
+        max_courses_per_subject = None  # 0或负数表示不限制
     
     if args.single:
         # Single course mode
@@ -106,9 +131,9 @@ def main():
             subject_urls=subject_urls,
             download_dir=args.download_dir,
             query_url=args.query_url,
-            max_courses_per_subject=args.max_courses_per_subject
+            max_courses_per_subject=max_courses_per_subject
         )
-        result = scraper.run(max_total_courses=args.max_total_courses)
+        result = scraper.run(max_total_courses=max_total_courses)
         if result:
             print(f"Total courses discovered: {result['total_discovered']}")
             print(f"Successfully processed: {result['total_processed']}")

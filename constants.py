@@ -13,9 +13,9 @@ DEFAULT_SUBJECT_URLS = [
 ]
 
 DEFAULT_QUERY_URL = "https://ocw.mit.edu/search/?q=python"
-DEFAULT_MAX_COURSES_PER_SUBJECT = 5
-DEFAULT_MAX_TOTAL_COURSES = 10
-MAX_PAGES_PER_SUBJECT = 3  # Limit pages per subject for responsible scraping
+DEFAULT_MAX_COURSES_PER_SUBJECT = None  # None表示不限制每个主题抓取的课程数量
+DEFAULT_MAX_TOTAL_COURSES = None  # None表示不限制总课程数量
+MAX_PAGES_PER_SUBJECT = 10000  # 允许爬取上千页的内容
 COURSE_DELAY_SECONDS = 20  # Delay between processing courses
 PAGE_DELAY_SECONDS = 10  # Delay between pages
 REQUEST_DELAY_MIN = 1.0  # Minimum delay between requests
