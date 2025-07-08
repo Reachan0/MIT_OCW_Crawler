@@ -257,8 +257,8 @@ class CourseScraper:
                     saved_urls = data.get('urls', [])
                     
                     if saved_task_id == self.task_id and set(saved_urls) == set(self._urls_to_scrape):
-                    self.courses_found = data.get('courses', [])
-                    self.logger.log_message(f"加载已发现的课程: {len(self.courses_found)} 个")
+                        self.courses_found = data.get('courses', [])
+                        self.logger.log_message(f"加载已发现的课程: {len(self.courses_found)} 个")
                     else:
                         self.logger.log_message(f"URL集合已更改，将重新爬取课程列表")
                         self.courses_found = []
@@ -361,190 +361,58 @@ class CourseScraper:
                 # 更新进度
                 self._update_progress("discovery", f"已抓取 {subject_name} 第1页，发现 {courses_found_this_subject} 个课程")
 
-                # Navigate through additional pages (up to MAX_PAGES_PER_SUBJECT)
-                current_page = 1
-                for page_num in range(2, MAX_PAGES_PER_SUBJECT + 1):
-                    current_page = page_num
-
-                    # Try to find and click the next page button
+                # Handle infinite scroll pagination
+                scroll_attempt = 1
+                max_scroll_attempts = 100  # Prevent infinite loops
+                courses_before_scroll = courses_found_this_subject
+                
+                while scroll_attempt <= max_scroll_attempts:
                     try:
-                        # 首先，等待按钮出现在页面代码中 (不一定可见)
-                        next_button_element = WebDriverWait(self.driver, 10).until(
-                            EC.presence_of_element_located((By.CSS_SELECTOR, "button.next-page-button, a.next-page"))
-                        )
-
-                        # 然后，使用 ActionChains 来滚动到按钮位置并执行点击
-                        actions = ActionChains(self.driver)
-                        actions.move_to_element(next_button_element).click().perform()
-
-                        self.logger.log_message(f"Navigating to page {current_page} for {subject_name}")
-                        self._update_progress("discovery", f"正在抓取 {subject_name} 第{current_page}页")
-
-                        # Wait for the new page to load
-                        time.sleep(PAGE_DELAY_SECONDS)  # Reasonable delay between page loads
-
-                        # Wait for content on the new page
-                        WebDriverWait(self.driver, wait_time).until(
-                            EC.presence_of_element_located((By.CSS_SELECTOR, "article"))
-                        )
-
-                        # Process this page
-                        courses_on_page = self._extract_courses_from_page(self.driver.page_source)
+                        # Scroll to bottom to trigger infinite scroll
+                        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                         
-                        # Add subject info and check limit
-                        courses_added_this_page = 0
-                        for course in courses_on_page:
+                        # Wait for potential new content to load
+                        time.sleep(3)
+                        
+                        # Check if new content loaded by comparing course count
+                        current_courses = self._extract_courses_from_page(self.driver.page_source)
+                        
+                        # If no new courses loaded, we've reached the end
+                        if len(current_courses) <= courses_before_scroll:
+                            self.logger.log_message(f"No new courses loaded after scrolling for {subject_name}. Reached end of results.")
+                            break
+                            
+                        # Extract only the new courses (beyond what we already have)
+                        new_courses = current_courses[courses_before_scroll:]
+                        
+                        # Add new courses and check limit
+                        courses_added_this_scroll = 0
+                        for course in new_courses:
                             if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
-                                self.logger.log_message(f"Reached max_courses_per_subject ({self.max_courses_per_subject}) for {subject_name} on page {current_page}. Moving to next URL.", level=logging.INFO)
-                                break # Stop adding courses from this page
+                                self.logger.log_message(f"Reached max_courses_per_subject ({self.max_courses_per_subject}) for {subject_name} after scroll {scroll_attempt}. Moving to next URL.", level=logging.INFO)
+                                break
                             course["subject"] = subject_name
                             course["subject_url"] = current_url
                             all_courses.append(course)
                             courses_found_this_subject += 1
-                            courses_added_this_page += 1
+                            courses_added_this_scroll += 1
                         
-                        self.logger.log_message(f"Extracted {courses_added_this_page} courses from page {current_page} for {subject_name} (Total for this subject: {courses_found_this_subject}).")
-                        self._update_progress("discovery", f"已抓取 {subject_name} 第{current_page}页，发现 {courses_found_this_subject} 个课程")
+                        self.logger.log_message(f"Scroll {scroll_attempt}: Found {courses_added_this_scroll} new courses for {subject_name} (Total: {courses_found_this_subject}).")
+                        self._update_progress("discovery", f"已滚动 {subject_name} {scroll_attempt} 次，发现 {courses_found_this_subject} 个课程")
                         
-                        # Break outer loop (subjects) if limit reached
+                        # Update courses count for next iteration
+                        courses_before_scroll = courses_found_this_subject
+                        
+                        # Break if limit reached
                         if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
-                           break # Stop paginating for this subject
-                           
-                    except (TimeoutException, NoSuchElementException) as e:
-                        # 尝试使用更宽泛的选择器查找下一页按钮
-                        try:
-                            # 尝试查找页码控件
-                            pagination = self.driver.find_element(By.CSS_SELECTOR, ".pager, .pagination, nav[aria-label*='pagination']")
+                            break
                             
-                            # 查找文本内容包含"Next"或"下一页"或数字的元素
-                            next_page_candidates = []
-                            
-                            # 查找包含"Next"的链接
-                            next_links = pagination.find_elements(By.XPATH, ".//a[contains(text(), 'Next') or contains(@aria-label, 'Next') or contains(@title, 'Next')]")
-                            if next_links:
-                                next_page_candidates.extend(next_links)
-                            
-                            # 查找当前页码和下一页码
-                            current_page_element = pagination.find_element(By.CSS_SELECTOR, ".current, .active, [aria-current='true']")
-                            if current_page_element:
-                                current_num = int(current_page_element.text.strip())
-                                next_num = current_num + 1
-                                
-                                # 查找下一页码的链接
-                                next_page_links = pagination.find_elements(By.XPATH, f".//a[text()='{next_num}' or @aria-label='Page {next_num}']")
-                                if next_page_links:
-                                    next_page_candidates.extend(next_page_links)
-                            
-                            # 如果找到候选元素，尝试点击第一个
-                            if next_page_candidates:
-                                self.logger.log_message(f"Found alternative next page element for {subject_name}")
-                                
-                                # 滚动到元素位置并点击
-                                actions = ActionChains(self.driver)
-                                actions.move_to_element(next_page_candidates[0]).click().perform()
-                                
-                                # 等待新页面加载
-                                time.sleep(PAGE_DELAY_SECONDS)
-                                
-                                # 等待内容加载
-                                WebDriverWait(self.driver, wait_time).until(
-                                    EC.presence_of_element_located((By.CSS_SELECTOR, "article"))
-                                )
-                                
-                                # 处理页面内容
-                                courses_on_page = self._extract_courses_from_page(self.driver.page_source)
-                                
-                                # 添加主题信息并检查限制
-                                courses_added_this_page = 0
-                                for course in courses_on_page:
-                                    if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
-                                        self.logger.log_message(f"Reached max_courses_per_subject ({self.max_courses_per_subject}) for {subject_name} on page {current_page}. Moving to next URL.", level=logging.INFO)
-                                        break
-                                    course["subject"] = subject_name
-                                    course["subject_url"] = current_url
-                                    all_courses.append(course)
-                                    courses_found_this_subject += 1
-                                    courses_added_this_page += 1
-                                
-                                self.logger.log_message(f"Extracted {courses_added_this_page} courses from page {current_page} (alternative navigation) for {subject_name} (Total for this subject: {courses_found_this_subject}).")
-                                self._update_progress("discovery", f"已抓取 {subject_name} 第{current_page}页，发现 {courses_found_this_subject} 个课程")
-                                
-                                # 如果已达到限制，退出循环
-                                if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
-                                    break
-                                
-                                # 继续循环到下一页
-                                continue
-                                
-                            # 如果找不到任何候选元素，尝试使用URL分页
-                            current_url_obj = urlparse(self.driver.current_url)
-                            query_params = parse_qs(current_url_obj.query)
-                            
-                            # 检查是否有page参数
-                            if 'page' in query_params:
-                                current_page_num = int(query_params['page'][0])
-                                next_page_num = current_page_num + 1
-                            else:
-                                next_page_num = 2  # 假设第一页没有page参数
-                            
-                            # 构建下一页的URL
-                            next_page_params = query_params.copy()
-                            next_page_params['page'] = [str(next_page_num)]
-                            
-                            # 重建URL
-                            from urllib.parse import urlencode
-                            next_page_query = urlencode(next_page_params, doseq=True)
-                            next_page_url = current_url_obj._replace(query=next_page_query).geturl()
-                            
-                            self.logger.log_message(f"Trying URL-based pagination to page {next_page_num} for {subject_name}: {next_page_url}")
-                            
-                            # 访问下一页
-                            self.driver.get(next_page_url)
-                            time.sleep(PAGE_DELAY_SECONDS)
-                            
-                            # 检查是否加载了新的内容
-                            try:
-                                WebDriverWait(self.driver, wait_time).until(
-                                    EC.presence_of_element_located((By.CSS_SELECTOR, "article"))
-                                )
-                                
-                                # 检查是否与上一页相同
-                                new_courses = self._extract_courses_from_page(self.driver.page_source)
-                                if len(new_courses) > 0:
-                                    # 添加主题信息并检查限制
-                                    courses_added_this_page = 0
-                                    for course in new_courses:
-                                        if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
-                                            self.logger.log_message(f"Reached max_courses_per_subject ({self.max_courses_per_subject}) for {subject_name} on page {current_page}. Moving to next URL.", level=logging.INFO)
-                                            break
-                                        course["subject"] = subject_name
-                                        course["subject_url"] = current_url
-                                        all_courses.append(course)
-                                        courses_found_this_subject += 1
-                                        courses_added_this_page += 1
-                                    
-                                    self.logger.log_message(f"Extracted {courses_added_this_page} courses from page {current_page} (URL pagination) for {subject_name} (Total for this subject: {courses_found_this_subject}).")
-                                    self._update_progress("discovery", f"已抓取 {subject_name} 第{current_page}页，发现 {courses_found_this_subject} 个课程")
-                                    
-                                    # 如果已达到限制，退出循环
-                                    if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
-                                        break
-                                    
-                                    # 继续循环到下一页
-                                    continue
-                                else:
-                                    self.logger.log_message(f"No courses found on URL-based pagination page {next_page_num} for {subject_name}. Stopping pagination.")
-                                    break
-                                    
-                            except TimeoutException:
-                                self.logger.log_message(f"Timeout waiting for content on URL-based pagination page {next_page_num} for {subject_name}. Stopping pagination.")
-                                break
-                                
-                        except Exception as e2:
-                            self.logger.log_message(f"Could not navigate to page {current_page} for {subject_name} after multiple attempts: {e2}", level=logging.WARNING)
-                        self.logger.log_message(f"Either reached the last page or navigation element not found for {subject_name}.")
-                        break # Stop paginating for this subject
-            
+                        scroll_attempt += 1
+                        
+                    except Exception as e:
+                        self.logger.log_message(f"Error during infinite scroll for {subject_name}: {e}", level=logging.WARNING)
+                        break
+                        
             except Exception as e:
                 self.logger.log_message(f"Error processing URL {current_url} ({subject_name}): {e}", level=logging.ERROR)
             
