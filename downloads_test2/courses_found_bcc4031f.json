@@ -1,0 +1,60 @@
+{
+  "timestamp": "2025-07-08 20:14:36",
+  "task_id": "bcc4031f",
+  "urls": [
+    "https://ocw.mit.edu/search/?d=Mathematics"
+  ],
+  "total_courses_found": 10,
+  "courses": [
+    {
+      "title": "Linear Partial Differential Equations: Analysis and Numerics",
+      "url": "https://ocw.mit.edu/courses/18-303-linear-partial-differential-equations-analysis-and-numerics-fall-2014/",
+      "info": "18.303 | Undergraduate"
+    },
+    {
+      "title": "Single Variable Calculus",
+      "url": "https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/",
+      "info": "18.01 | Undergraduate"
+    },
+    {
+      "title": "Linear Algebra",
+      "url": "https://ocw.mit.edu/courses/18-700-linear-algebra-fall-2013/",
+      "info": "18.700 | Undergraduate"
+    },
+    {
+      "title": "Fourier Analysis",
+      "url": "https://ocw.mit.edu/courses/18-103-fourier-analysis-fall-2013/",
+      "info": "18.103 | Undergraduate"
+    },
+    {
+      "title": "Mathematical Methods for Engineers II",
+      "url": "https://ocw.mit.edu/courses/18-086-mathematical-methods-for-engineers-ii-spring-2006/",
+      "info": "18.086 | Graduate"
+    },
+    {
+      "title": "Integral Equations",
+      "url": "https://ocw.mit.edu/courses/18-307-integral-equations-spring-2006/",
+      "info": "18.307 | Graduate"
+    },
+    {
+      "title": "Advanced Algorithms",
+      "url": "https://ocw.mit.edu/courses/6-854j-advanced-algorithms-fall-2008/",
+      "info": "18.415J | Graduate"
+    },
+    {
+      "title": "Seminar in Analysis: Applications to Number Theory",
+      "url": "https://ocw.mit.edu/courses/18-104-seminar-in-analysis-applications-to-number-theory-fall-2006/",
+      "info": "18.104 | Undergraduate"
+    },
+    {
+      "title": "Combinatorial Analysis",
+      "url": "https://ocw.mit.edu/courses/18-314-combinatorial-analysis-fall-2014/",
+      "info": "18.314 | Undergraduate"
+    },
+    {
+      "title": "Seminar in Topology",
+      "url": "https://ocw.mit.edu/courses/18-904-seminar-in-topology-spring-2011/",
+      "info": "18.904 | Undergraduate"
+    }
+  ]
+}

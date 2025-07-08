@@ -4,6 +4,7 @@ import logging
 import os
 import re
 import time
+import hashlib
 from urllib.parse import parse_qs, urljoin, urlparse
 
 # Third-party imports
@@ -39,12 +40,15 @@ class CourseScraper:
         self.courses_processed = []
         self.courses_failed = []
         
+        # 生成基于URL的唯一标识符，用于区分不同的爬取任务
+        self.task_id = self._generate_task_id(subject_urls, query_url)
+        
         # Path for the combined content file
-        self.combined_content_path = os.path.join(download_dir, "scraped_content.json")
+        self.combined_content_path = os.path.join(download_dir, f"scraped_content_{self.task_id}.json")
         
         # 添加进度文件路径
-        self.progress_file = os.path.join(download_dir, "scraper_progress.json")
-        self.courses_found_file = os.path.join(download_dir, "courses_found.json")
+        self.progress_file = os.path.join(download_dir, f"scraper_progress_{self.task_id}.json")
+        self.courses_found_file = os.path.join(download_dir, f"courses_found_{self.task_id}.json")
         
         # 调试打印：初始传入的URLs
         print("Debug - Original subject_urls received by CourseScraper:")
@@ -74,6 +78,7 @@ class CourseScraper:
             
         self._urls_to_scrape.extend(self.subject_urls)
         self.logger.log_message(f"URLs to scrape: {self._urls_to_scrape}")
+        self.logger.log_message(f"Task ID: {self.task_id}")
 
         # Initialize the browser
         self.driver = self._setup_selenium()
@@ -85,6 +90,17 @@ class CourseScraper:
             
         # 加载已发现的课程（如果有）
         self._load_found_courses()
+    
+    def _generate_task_id(self, subject_urls, query_url):
+        """根据URLs生成任务的唯一标识符"""
+        # 将所有URL排序并连接起来
+        all_urls = sorted(subject_urls)
+        if query_url:
+            all_urls.append(query_url)
+        
+        # 使用MD5生成一个短的哈希值作为任务ID
+        url_string = "".join(all_urls)
+        return hashlib.md5(url_string.encode('utf-8')).hexdigest()[:8]
     
     def _extract_subject_from_url(self, subject_url):
         """Extract subject name from URL, handling d=, t=, and q= parameters."""
@@ -222,6 +238,8 @@ class CourseScraper:
             with open(self.courses_found_file, 'w', encoding='utf-8') as f:
                 json.dump({
                     "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+                    "task_id": self.task_id,
+                    "urls": self._urls_to_scrape,
                     "total_courses_found": len(self.courses_found),
                     "courses": self.courses_found
                 }, f, indent=2, ensure_ascii=False)
@@ -234,8 +252,16 @@ class CourseScraper:
             try:
                 with open(self.courses_found_file, 'r', encoding='utf-8') as f:
                     data = json.load(f)
+                    # 检查任务ID是否匹配
+                    saved_task_id = data.get('task_id')
+                    saved_urls = data.get('urls', [])
+                    
+                    if saved_task_id == self.task_id and set(saved_urls) == set(self._urls_to_scrape):
                     self.courses_found = data.get('courses', [])
                     self.logger.log_message(f"加载已发现的课程: {len(self.courses_found)} 个")
+                    else:
+                        self.logger.log_message(f"URL集合已更改，将重新爬取课程列表")
+                        self.courses_found = []
             except Exception as e:
                 self.logger.log_message(f"加载已发现的课程失败: {e}", level=logging.ERROR)
                 self.courses_found = []
@@ -244,6 +270,8 @@ class CourseScraper:
         """更新并保存进度信息"""
         progress = {
             "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+            "task_id": self.task_id,
+            "urls": self._urls_to_scrape,
             "stage": stage,
             "detail": detail,
             "total_courses_found": len(self.courses_found),
@@ -275,10 +303,10 @@ class CourseScraper:
         """Discovers courses from the query URL and subject URLs, respecting limits."""
         self._update_progress("discovery", "开始发现课程")
         
-        # 如果已经有发现的课程，询问是否继续
+        # 如果已经有发现的课程，检查是否为相同的URL集合
         if self.courses_found:
-            self.logger.log_message(f"已发现 {len(self.courses_found)} 个课程。跳过发现阶段。")
-            self._update_progress("discovery", f"跳过发现阶段，使用已有的 {len(self.courses_found)} 个课程")
+            self.logger.log_message(f"已发现 {len(self.courses_found)} 个课程。")
+            self._update_progress("discovery", f"使用已有的 {len(self.courses_found)} 个课程")
             return self.courses_found
 
         all_courses = []
@@ -514,8 +542,8 @@ class CourseScraper:
                                 
                         except Exception as e2:
                             self.logger.log_message(f"Could not navigate to page {current_page} for {subject_name} after multiple attempts: {e2}", level=logging.WARNING)
-                            self.logger.log_message(f"Either reached the last page or navigation element not found for {subject_name}.")
-                            break # Stop paginating for this subject
+                        self.logger.log_message(f"Either reached the last page or navigation element not found for {subject_name}.")
+                        break # Stop paginating for this subject
             
             except Exception as e:
                 self.logger.log_message(f"Error processing URL {current_url} ({subject_name}): {e}", level=logging.ERROR)
@@ -639,7 +667,7 @@ class CourseScraper:
             
             # 更新进度
             self._update_progress("processing")
-            
+        
         # Save a summary report
         self._save_summary_report()
         self._update_progress("complete", "处理完成")
@@ -654,6 +682,7 @@ class CourseScraper:
         """Saves a summary report of the scraping process."""
         report = {
             "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+            "task_id": self.task_id,
             "subject_urls": self.subject_urls,
             "total_courses_found": len(self.courses_found),
             "total_courses_processed": len(self.courses_processed),
@@ -662,7 +691,7 @@ class CourseScraper:
             "courses_failed": self.courses_failed
         }
         
-        report_path = os.path.join(self.download_dir, "scraping_summary.json")
+        report_path = os.path.join(self.download_dir, f"scraping_summary_{self.task_id}.json")
         try:
             with open(report_path, "w", encoding="utf-8") as f:
                 json.dump(report, f, indent=2, ensure_ascii=False)
@@ -678,6 +707,7 @@ class CourseScraper:
         combined_data = {
             "metadata": {
                 "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+                "task_id": self.task_id,
                 "total_courses": len(self.courses_processed),
                 "subjects": [
                     {
@@ -706,10 +736,12 @@ class CourseScraper:
                     self.logger.log_message(f"Error loading course data from {output_path}: {e}", level=logging.ERROR)
         
         # Save the combined data to the main directory (not in a subject folder)
+        # 使用任务ID来区分不同URL的爬取结果
+        combined_content_path = os.path.join(self.download_dir, f"scraped_content_{self.task_id}.json")
         try:
-            with open(self.combined_content_path, "w", encoding="utf-8") as f:
+            with open(combined_content_path, "w", encoding="utf-8") as f:
                 json.dump(combined_data, f, indent=2, ensure_ascii=False)
-            self.logger.log_message(f"Successfully saved combined data to {self.combined_content_path}")
+            self.logger.log_message(f"Successfully saved combined data to {combined_content_path}")
             return True
         except Exception as e:
             self.logger.log_message(f"Failed to save combined data: {e}", level=logging.ERROR)
@@ -736,6 +768,9 @@ class CourseScraper:
             # Combine all course data into a single file
             combined_success = self._save_combined_content()
             
+            # 更新combined_content_path为带有任务ID的路径
+            combined_content_path = os.path.join(self.download_dir, f"scraped_content_{self.task_id}.json")
+            
             # Remove empty files and folders
             self.remove_empty_files_and_folders()
             
@@ -747,7 +782,7 @@ class CourseScraper:
                 self.logger.log_message(f"Successfully processed: {result['total_processed']}")
                 self.logger.log_message(f"Failed: {result['total_failed']}")
             if combined_success:
-                self.logger.log_message(f"All content combined in: {self.combined_content_path}")
+                self.logger.log_message(f"All content combined in: {combined_content_path}")
             
             # 再次打印分布式抓取信息
             if DISTRIBUTED_SCRAPING_ENABLED:

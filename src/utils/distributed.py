@@ -231,7 +231,7 @@ class DistributedScraper:
         print(f"Debug - Distributed mode: node {self.node_id}/{self.total_nodes}, returning filtered URLs:")
         for url in node_urls:
             print(f"  - {url}")
-            
+                
         self.logger.log_message(f"节点 {self.node_id}/{self.total_nodes} 分配到 {len(node_urls)}/{len(all_subject_urls)} 个学科")
         return node_urls
         
