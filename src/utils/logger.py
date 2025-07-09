@@ -13,9 +13,14 @@ class Logger:
         self.logger.setLevel(level)
 
         if not self.is_dev:
-            self.logger.addHandler(logging.NullHandler())
+            if not self.logger.handlers:
+                self.logger.addHandler(logging.NullHandler())
             return
 
+        # Check if handlers are already present to prevent duplication
+        if self.logger.handlers:
+            return
+        
         os.makedirs("./logs", exist_ok=True)
 
         formatter = logging.Formatter(
