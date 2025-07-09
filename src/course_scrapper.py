@@ -83,6 +83,12 @@ class CourseScraper:
         # Initialize the browser
         self.driver = self._setup_selenium()
         
+        # Check if WebDriver initialization was successful
+        if self.driver is None:
+            self.logger.log_message("Chrome WebDriver not available. Will use requests-based fallback for course discovery.", level=logging.WARNING)
+        else:
+            self.logger.log_message("Chrome WebDriver initialized successfully.")
+        
         # 启动分布式同步线程（如果启用）
         if DISTRIBUTED_SCRAPING_ENABLED:
             self.distributed.start_sync()
@@ -182,7 +188,133 @@ class CourseScraper:
                 return driver
             except Exception as e2:
                 self.logger.log_message(f"Failed to initialize Chrome WebDriver with fallback: {e2}", level=logging.ERROR)
-                raise RuntimeError("Could not initialize WebDriver. Please ensure Chrome and ChromeDriver are installed.")
+                self.logger.log_message("Chrome not available. Will use requests-based fallback method.", level=logging.WARNING)
+                return None  # Return None to indicate no WebDriver available
+    
+    def _discover_courses_with_requests(self, url, subject_name):
+        """Fallback method to discover courses using requests when Chrome is not available."""
+        import requests
+        from bs4 import BeautifulSoup
+        
+        self.logger.log_message(f"Using requests-based fallback for course discovery from: {url}")
+        courses = []
+        
+        try:
+            # Make initial request
+            response = requests.get(url, headers=HEADERS, timeout=30)
+            response.raise_for_status()
+            
+            # Parse the HTML
+            soup = BeautifulSoup(response.content, "html.parser")
+            
+            # Debug: Print page structure
+            self.logger.log_message(f"Page title: {soup.title.string if soup.title else 'No title'}")
+            
+            # Look for different possible selectors
+            selectors_to_try = [
+                "article",
+                ".course-item",
+                ".course-card", 
+                ".course-result",
+                "div[class*='course']",
+                "li[class*='course']",
+                ".search-result",
+                "div[class*='result']"
+            ]
+            
+            for selector in selectors_to_try:
+                elements = soup.select(selector)
+                if elements:
+                    self.logger.log_message(f"Found {len(elements)} elements with selector '{selector}'")
+                    
+                    # Try to extract courses using this selector
+                    for element in elements:
+                        course_info = self._extract_course_from_article(element)
+                        if course_info:
+                            course_info["subject"] = subject_name
+                            course_info["subject_url"] = url
+                            courses.append(course_info)
+                            
+                            # Also add to the global courses_found list
+                            self.courses_found.append(course_info)
+                            self._save_found_courses()
+                            
+                            # 打印实时进度
+                            print(f"\r发现课程: {len(self.courses_found)} | 当前: {course_info['title']}", end="")
+                    
+                    if courses:
+                        break
+                else:
+                    self.logger.log_message(f"No elements found with selector '{selector}'")
+            
+            self.logger.log_message(f"Successfully extracted {len(courses)} courses using requests fallback.")
+            print()  # 换行
+            return courses
+            
+        except Exception as e:
+            self.logger.log_message(f"Error in requests-based course discovery: {e}", level=logging.ERROR)
+            return []
+    
+    def _extract_course_from_article(self, article):
+        """Extract course information from a single article element."""
+        try:
+            # Find the course title and URL
+            title_link = article.find("a", href=True)
+            if not title_link:
+                return None
+                
+            title = title_link.get_text(strip=True)
+            url = title_link["href"]
+            
+            # Make URL absolute if needed
+            if url.startswith("/"):
+                url = f"https://ocw.mit.edu{url}"
+            
+            # Find course info (level, department, etc.)
+            info_text = "No info available"
+            
+            # Try multiple selectors for course info
+            selectors = [
+                "span.course-info",
+                "div.course-info", 
+                ".course-info",
+                "p.course-info",
+                ".course-level",
+                ".course-department"
+            ]
+            
+            for selector in selectors:
+                info_elements = article.select(selector)
+                if info_elements:
+                    info_text = " | ".join([elem.get_text(strip=True) for elem in info_elements])
+                    break
+            
+            # If no specific info found, try to extract from the article text
+            if info_text == "No info available":
+                # Look for common patterns
+                article_text = article.get_text()
+                
+                # Look for course codes (e.g., "6.001", "18.01")
+                import re
+                course_code_match = re.search(r'(\d+\.\d+[A-Z]*)', article_text)
+                if course_code_match:
+                    info_text = course_code_match.group(1)
+                
+                # Look for level indicators
+                if "Graduate" in article_text:
+                    info_text += " | Graduate"
+                elif "Undergraduate" in article_text:
+                    info_text += " | Undergraduate"
+            
+            return {
+                "title": title,
+                "url": url,
+                "info": info_text
+            }
+            
+        except Exception as e:
+            self.logger.log_message(f"Error extracting course from article: {e}", level=logging.WARNING)
+            return None
     
     def _extract_courses_from_page(self, html_content):
         """Extracts course information from the page HTML."""
@@ -215,21 +347,10 @@ class CourseScraper:
                             "info": course_info
                         })
                         
-                        # 实时保存发现的课程
-                        self.courses_found.append({
-                            "title": title,
-                            "url": url,
-                            "info": course_info
-                        })
-                        self._save_found_courses()
-                        
-                        # 打印实时进度
-                        print(f"\r发现课程: {len(self.courses_found)} | 当前: {title}", end="")
             except Exception as e:
                 self.logger.log_message(f"Error extracting course data from article: {e}", level=logging.WARNING)
                 continue
         
-        print()  # 换行
         return courses
     
     def _save_found_courses(self):
@@ -309,8 +430,6 @@ class CourseScraper:
             self._update_progress("discovery", f"使用已有的 {len(self.courses_found)} 个课程")
             return self.courses_found
 
-        all_courses = []
-
         # Use the prepared list of URLs
         for url_index, current_url in enumerate(self._urls_to_scrape):
             subject_name = self._extract_subject_from_url(current_url)
@@ -324,94 +443,130 @@ class CourseScraper:
             courses_found_this_subject = 0 # Counter for this specific URL
 
             try:
-                # Navigate to the subject/query page
-                self.driver.get(current_url)
-
-                # Wait for the course articles to load
-                wait_time = 20  # Seconds to wait for page load
-                try:
-                    WebDriverWait(self.driver, wait_time).until(
-                        EC.presence_of_element_located((By.CSS_SELECTOR, "article"))
-                    )
-                    self.logger.log_message(f"Course content loaded on initial page for {subject_name}.")
-                    time.sleep(3)  # Small delay for render completion
-                except TimeoutException:
-                    self.logger.log_message(f"Timed out waiting for course content on initial page for {subject_name}. Skipping.", level=logging.WARNING)
-                    continue
-
-                # Process the first page
-                courses_on_page = self._extract_courses_from_page(self.driver.page_source)
-                
-                # Add subject info and check limit
-                for course in courses_on_page:
-                    if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
-                        self.logger.log_message(f"Reached max_courses_per_subject ({self.max_courses_per_subject}) for {subject_name}. Moving to next URL.", level=logging.INFO)
-                        break # Stop adding courses from this page
-                    course["subject"] = subject_name
-                    course["subject_url"] = current_url
-                    all_courses.append(course)
-                    courses_found_this_subject += 1
-                
-                self.logger.log_message(f"Extracted {len(courses_on_page)} courses from initial page for {subject_name} (Total for this subject: {courses_found_this_subject}).")
-
-                # Check if we already hit the limit before trying pagination
-                if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
-                    continue # Move to the next subject/query URL
-
-                # 更新进度
-                self._update_progress("discovery", f"已抓取 {subject_name} 第1页，发现 {courses_found_this_subject} 个课程")
-
-                # Handle infinite scroll pagination
-                scroll_attempt = 1
-                max_scroll_attempts = 100  # Prevent infinite loops
-                courses_before_scroll = courses_found_this_subject
-                
-                while scroll_attempt <= max_scroll_attempts:
-                    try:
-                        # Scroll to bottom to trigger infinite scroll
-                        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-                        
-                        # Wait for potential new content to load
-                        time.sleep(3)
-                        
-                        # Check if new content loaded by comparing course count
-                        current_courses = self._extract_courses_from_page(self.driver.page_source)
-                        
-                        # If no new courses loaded, we've reached the end
-                        if len(current_courses) <= courses_before_scroll:
-                            self.logger.log_message(f"No new courses loaded after scrolling for {subject_name}. Reached end of results.")
-                            break
-                            
-                        # Extract only the new courses (beyond what we already have)
-                        new_courses = current_courses[courses_before_scroll:]
-                        
-                        # Add new courses and check limit
-                        courses_added_this_scroll = 0
-                        for course in new_courses:
-                            if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
-                                self.logger.log_message(f"Reached max_courses_per_subject ({self.max_courses_per_subject}) for {subject_name} after scroll {scroll_attempt}. Moving to next URL.", level=logging.INFO)
-                                break
-                            course["subject"] = subject_name
-                            course["subject_url"] = current_url
-                            all_courses.append(course)
-                            courses_found_this_subject += 1
-                            courses_added_this_scroll += 1
-                        
-                        self.logger.log_message(f"Scroll {scroll_attempt}: Found {courses_added_this_scroll} new courses for {subject_name} (Total: {courses_found_this_subject}).")
-                        self._update_progress("discovery", f"已滚动 {subject_name} {scroll_attempt} 次，发现 {courses_found_this_subject} 个课程")
-                        
-                        # Update courses count for next iteration
-                        courses_before_scroll = courses_found_this_subject
-                        
-                        # Break if limit reached
+                # Check if we have a working driver
+                if self.driver is None:
+                    # Use requests-based fallback
+                    self.logger.log_message(f"Using requests-based fallback for {subject_name}")
+                    courses_from_requests = self._discover_courses_with_requests(current_url, subject_name)
+                    
+                    # Count courses found for this subject
+                    for course in courses_from_requests:
                         if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
+                            self.logger.log_message(f"Reached max_courses_per_subject ({self.max_courses_per_subject}) for {subject_name}. Moving to next URL.", level=logging.INFO)
                             break
-                            
-                        scroll_attempt += 1
+                        # Add to global courses list (courses are already processed in _discover_courses_with_requests)
+                        courses_found_this_subject += 1
+                    
+                    self.logger.log_message(f"Extracted {len(courses_from_requests)} courses using requests fallback for {subject_name}.")
+                    
+                else:
+                    # Use Selenium-based scraping (original logic)
+                    # Navigate to the subject/query page
+                    self.driver.get(current_url)
+
+                    # Wait for the course articles to load
+                    wait_time = 20  # Seconds to wait for page load
+                    try:
+                        WebDriverWait(self.driver, wait_time).until(
+                            EC.presence_of_element_located((By.CSS_SELECTOR, "article"))
+                        )
+                        self.logger.log_message(f"Course content loaded on initial page for {subject_name}.")
+                        time.sleep(3)  # Small delay for render completion
+                    except TimeoutException:
+                        self.logger.log_message(f"Timed out waiting for course content on initial page for {subject_name}. Skipping.", level=logging.WARNING)
+                        continue
+
+                    # Process the first page
+                    courses_on_page = self._extract_courses_from_page(self.driver.page_source)
+                    
+                    # Add subject info and add to global courses list
+                    for course in courses_on_page:
+                        if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
+                            self.logger.log_message(f"Reached max_courses_per_subject ({self.max_courses_per_subject}) for {subject_name}. Moving to next URL.", level=logging.INFO)
+                            break # Stop adding courses from this page
+                        course["subject"] = subject_name
+                        course["subject_url"] = current_url
                         
-                    except Exception as e:
-                        self.logger.log_message(f"Error during infinite scroll for {subject_name}: {e}", level=logging.WARNING)
-                        break
+                        # Add to global courses list
+                        self.courses_found.append(course)
+                        self._save_found_courses()
+                        
+                        courses_found_this_subject += 1
+                        
+                        # 打印实时进度
+                        print(f"\r发现课程: {len(self.courses_found)} | 当前: {course['title']}", end="")
+                    
+                    print()  # 换行
+                    
+                    self.logger.log_message(f"Extracted {len(courses_on_page)} courses from initial page for {subject_name} (Total for this subject: {courses_found_this_subject}).")
+
+                    # Check if we already hit the limit before trying pagination
+                    if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
+                        continue # Move to the next subject/query URL
+
+                    # 更新进度
+                    self._update_progress("discovery", f"已抓取 {subject_name} 第1页，发现 {courses_found_this_subject} 个课程")
+
+                    # Handle infinite scroll pagination
+                    scroll_attempt = 1
+                    max_scroll_attempts = 100  # Prevent infinite loops
+                    courses_before_scroll = courses_found_this_subject
+                    
+                    while scroll_attempt <= max_scroll_attempts:
+                        try:
+                            # Scroll to bottom to trigger infinite scroll
+                            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                            
+                            # Wait for potential new content to load
+                            time.sleep(3)
+                            
+                            # Check if new content loaded by comparing course count
+                            current_courses = self._extract_courses_from_page(self.driver.page_source)
+                            
+                            # If no new courses loaded, we've reached the end
+                            if len(current_courses) <= courses_before_scroll:
+                                self.logger.log_message(f"No new courses loaded after scrolling for {subject_name}. Reached end of results.")
+                                break
+                                
+                            # Extract only the new courses (beyond what we already have)
+                            new_courses = current_courses[courses_before_scroll:]
+                            
+                            # Add new courses and check limit
+                            courses_added_this_scroll = 0
+                            for course in new_courses:
+                                if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
+                                    self.logger.log_message(f"Reached max_courses_per_subject ({self.max_courses_per_subject}) for {subject_name} after scroll {scroll_attempt}. Moving to next URL.", level=logging.INFO)
+                                    break
+                                course["subject"] = subject_name
+                                course["subject_url"] = current_url
+                                
+                                # Add to global courses list  
+                                self.courses_found.append(course)
+                                self._save_found_courses()
+                                
+                                courses_found_this_subject += 1
+                                courses_added_this_scroll += 1
+                                
+                                # 打印实时进度
+                                print(f"\r发现课程: {len(self.courses_found)} | 当前: {course['title']}", end="")
+                            
+                            print()  # 换行
+                            
+                            self.logger.log_message(f"Scroll {scroll_attempt}: Found {courses_added_this_scroll} new courses for {subject_name} (Total: {courses_found_this_subject}).")
+                            self._update_progress("discovery", f"已滚动 {subject_name} {scroll_attempt} 次，发现 {courses_found_this_subject} 个课程")
+                            
+                            # Update courses count for next iteration
+                            courses_before_scroll = courses_found_this_subject
+                            
+                            # Break if limit reached
+                            if self.max_courses_per_subject is not None and courses_found_this_subject >= self.max_courses_per_subject:
+                                break
+                                
+                            scroll_attempt += 1
+                            
+                        except Exception as e:
+                            self.logger.log_message(f"Error during infinite scroll for {subject_name}: {e}", level=logging.WARNING)
+                            break
                         
             except Exception as e:
                 self.logger.log_message(f"Error processing URL {current_url} ({subject_name}): {e}", level=logging.ERROR)
@@ -420,9 +575,7 @@ class CourseScraper:
             self.logger.log_message(f"Finished processing URL: {current_url}")
             time.sleep(COURSE_DELAY_SECONDS)
         
-        # Update our discovered courses list and return it
-        # 注意：我们已经在extract_courses_from_page中实时更新courses_found了
-        # self.courses_found = all_courses
+        # Log final results
         self.logger.log_message(f"Total courses discovered across all URLs: {len(self.courses_found)}")
         self._update_progress("discovery", f"发现阶段完成，共发现 {len(self.courses_found)} 个课程")
         return self.courses_found
@@ -669,7 +822,7 @@ class CourseScraper:
                 self.distributed.stop_sync()
                 
             # Always close the browser
-            if hasattr(self, 'driver'):
+            if hasattr(self, 'driver') and self.driver is not None:
                 try:
                     self.driver.quit()
                     self.logger.log_message("Browser closed.")

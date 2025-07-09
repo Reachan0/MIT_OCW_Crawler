@@ -1,12 +1,12 @@
 {
-  "timestamp": "2025-07-09 10:33:21",
+  "timestamp": "2025-07-09 11:45:06",
   "task_id": "b233e473",
   "urls": [
     "https://ocw.mit.edu/search/?l=Non-Credit"
   ],
   "stage": "processing",
-  "detail": "正在处理 3/338: CITE Reports",
-  "total_courses_found": 338,
-  "total_courses_processed": 2,
+  "detail": "正在处理 26/64: How to Process, Analyze and Visualize Data",
+  "total_courses_found": 64,
+  "total_courses_processed": 25,
   "total_courses_failed": 0
 }
