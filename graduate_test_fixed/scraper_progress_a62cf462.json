@@ -1,12 +1,12 @@
 {
-  "timestamp": "2025-07-09 10:21:29",
+  "timestamp": "2025-07-09 10:37:20",
   "task_id": "a62cf462",
   "urls": [
     "https://ocw.mit.edu/search/?l=Graduate"
   ],
-  "stage": "discovery",
-  "detail": "已滚动 General 39 次，发现 400 个课程",
-  "total_courses_found": 8200,
-  "total_courses_processed": 0,
+  "stage": "complete",
+  "detail": "爬虫完成",
+  "total_courses_found": 8502,
+  "total_courses_processed": 3,
   "total_courses_failed": 0
 }

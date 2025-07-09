@@ -485,7 +485,7 @@ class CourseScraper:
                 if result:
                     # 检查是否有新内容被处理
                     result_path = result if isinstance(result, str) else result.get('path')
-                    content_processed = result.get('content_processed', True) if isinstance(result, dict) else True
+                    content_processed = result.get('content_processed', False) if isinstance(result, dict) else False
                     
                     self.courses_processed.append({
                         "title": course_title,
