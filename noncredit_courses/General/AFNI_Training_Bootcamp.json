@@ -1,0 +1,18 @@
+{
+  "course_name": "AFNI Training Bootcamp",
+  "course_description": "This training course is an introduction to the use of the AFNI software suites for the analysis of functional MRI (fMRI) data. It is not intended as an introduction to how fMRI works but is aimed at people who are already doing fMRI data analysis, or those who will be in the near future. \nAFNI (Analysis of Functional NeuroImages) is a leading software suite of C, Python, and R programs and shell scripts, primarily developed for the analysis and display of anatomical and fMRI data. It is freely available for research purposes. \nThis event was organized by the Center for Brains, Minds, and Machines (CBMM) Trainee Leadership Council.\nCBMM is a multi-institutional NSF Science and Technology Center headquartered at MIT that is dedicated to developing a computationally based understanding of human intelligence and establishing an engineering practice based on that understanding. CBMM brings together computer scientists, cognitive scientists, and neuroscientists to create a new field—the science and engineering of intelligence.",
+  "topics": [
+    "Health and Medicine",
+    "Biomedical Signal and Image Processing",
+    "Medical Imaging",
+    "Science",
+    "Cognitive Science",
+    "Health and Medicine",
+    "Biomedical Signal and Image Processing",
+    "Medical Imaging",
+    "Science",
+    "Cognitive Science"
+  ],
+  "syllabus_content": "",
+  "files": []
+}

@@ -22,6 +22,7 @@ class ContentScraper:
         self.download_dir = download_dir
         self.output_path = None
         self.logger = Logger(__name__, see_time=True, console_log=True)
+        self.session = requests.Session()  # Create a session for resource management
         self._ensure_dir_exists(self.download_dir)
 
     def _ensure_dir_exists(self, directory):
@@ -87,7 +88,7 @@ class ContentScraper:
         """Scrapes the main course page for name, description, and topics."""
         self.logger.log_message(f"Scraping course metadata from: {self.course_url}")
         try:
-            response = requests.get(self.course_url, headers=HEADERS, timeout=30)
+            response = self.session.get(self.course_url, headers=HEADERS, timeout=30)
             response.raise_for_status()
             soup = BeautifulSoup(response.content, "html.parser")
             
@@ -123,7 +124,7 @@ class ContentScraper:
         self.logger.log_message(f"Scraping file metadata from: {self.download_url}")
         file_metadata_list = []
         try:
-            response = requests.get(self.download_url, headers=HEADERS, timeout=30)
+            response = self.session.get(self.download_url, headers=HEADERS, timeout=30)
             response.raise_for_status()
             soup = BeautifulSoup(response.content, "html.parser")
             resource_items = soup.find_all("div", class_="resource-item resource-list-page")
@@ -204,7 +205,7 @@ class ContentScraper:
         error_message = None
 
         try:
-            file_response = requests.get(url, headers=HEADERS, timeout=60)
+            file_response = self.session.get(url, headers=HEADERS, timeout=60)
             file_response.raise_for_status()
             file_bytes = file_response.content
 
@@ -216,8 +217,9 @@ class ContentScraper:
                     error_message = f"Error extracting PDF: {e}"
             elif file_type == "DOCX":
                 try:
-                    document = Document(io.BytesIO(file_bytes))
-                    raw_content = "\n".join([para.text for para in document.paragraphs])
+                    with io.BytesIO(file_bytes) as docx_stream:
+                        document = Document(docx_stream)
+                        raw_content = "\n".join([para.text for para in document.paragraphs])
                 except Exception as e:
                     error_message = f"Error extracting DOCX: {e}"
             elif file_type == "PY":
@@ -281,7 +283,7 @@ class ContentScraper:
         }
 
         try:
-            response = requests.get(self.syllabus_url, headers=HEADERS, timeout=30)
+            response = self.session.get(self.syllabus_url, headers=HEADERS, timeout=30)
             # Check if page exists
             if response.status_code == 404:
                 self.logger.log_message(f"Syllabus page not found at {self.syllabus_url}", level=logging.WARNING)
@@ -458,4 +460,14 @@ class ContentScraper:
             "path": self.output_path,
             "content_processed": content_processed
         }  # 返回包含路径和处理状态的字典
+
+    def cleanup(self):
+        """Close the session and cleanup resources."""
+        if hasattr(self, 'session'):
+            self.session.close()
+            self.logger.log_message("HTTP session closed.")
+    
+    def __del__(self):
+        """Cleanup when object is destroyed."""
+        self.cleanup()
 

@@ -1,0 +1,20 @@
+{
+  "course_name": "Brain and Cognitive Sciences Computational Tutorial Series",
+  "course_description": "This is a seminar series led by graduate students and postdocs in the MIT Department of Brain and Cognitive Sciences (BCS) from 2015 to the present, featuring tutorials on computational topics relevant to research on intelligence in neuroscience, cognitive science, and artificial intelligence. These tutorials are aimed at participants who have some computational background but are not experts on these topics.\nA computational tutorial can consist of any method, tool, or model that is broadly relevant within neuroscience, cognitive science, and artificial intelligence. The goal is to bring researchers in brain and cognitive sciences closer to the researchers creating computational methods. \nResources posted here include lecture videos, lecture slides, code and datasets for exercises, background references, and other supplementary material. Typically, each tutorial consists of a short lecture, and an interactive part with tutorials or “office hours” to work through practice problems and discuss how the material may be applied to participants’ research. \nThis series was organized by Emily Mackevicius, Jenelle Feather, Nhat Le, Fernanda De La Torre Romo, and Greta Tuckute, with financial support from BCS. Videos were filmed, edited, and produced by Kris Brewer, Director of Technology at the Center for Brains, Minds, and Machines (CBMM).",
+  "topics": [
+    "Mathematics",
+    "Computation",
+    "Science",
+    "Biology",
+    "Neuroscience",
+    "Cognitive Science",
+    "Mathematics",
+    "Computation",
+    "Science",
+    "Biology",
+    "Neuroscience",
+    "Cognitive Science"
+  ],
+  "syllabus_content": "",
+  "files": []
+}

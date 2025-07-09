@@ -159,31 +159,37 @@ class CourseScraper:
     def _ensure_dir_exists(self, directory):
         """Ensures the specified directory exists."""
         os.makedirs(directory, exist_ok=True)
-        
+
+    # 重新引入 Service
+    from selenium.webdriver.chrome.service import Service
+
     def _setup_selenium(self):
-        """Sets up the Selenium WebDriver for browsing course pages."""
+        """Sets up the Selenium WebDriver using local files."""
         options = webdriver.ChromeOptions()
-        options.add_argument("--headless")  # Run in background
+        options.add_argument("--headless")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
-        
+
+        # --- 核心改动 ---
+        # 指定你上传的 Chrome 浏览器的路径
+        # 注意：路径需要根据你实际存放的位置修改
+        options.binary_location = "/home/chenxuanchong/projects/MIT_OCW_Crawler/drivers/chrome-linux64/chrome"
+
+        # 指定你上传的 chromedriver 的路径
+        # 注意：路径需要根据你实际存放的位置修改
+        service = Service(
+            executable_path="/home/chenxuanchong/projects/MIT_OCW_Crawler/drivers/chromedriver-linux64/chromedriver")
+
         try:
-            service = Service(ChromeDriverManager().install())
+            self.logger.log_message("Initializing Chrome WebDriver with local files...")
+            # 同时传入 service 和 options
             driver = webdriver.Chrome(service=service, options=options)
-            self.logger.log_message("Successfully initialized Chrome WebDriver.")
+            self.logger.log_message("Successfully initialized Chrome WebDriver from local files.")
             return driver
         except Exception as e:
-            self.logger.log_message(f"Error setting up Chrome WebDriver: {e}", level=logging.ERROR)
-            try:
-                # Fallback to direct instantiation
-                driver = webdriver.Chrome(options=options)
-                self.logger.log_message("Successfully initialized Chrome WebDriver with fallback method.")
-                return driver
-            except Exception as e2:
-                self.logger.log_message(f"Failed to initialize Chrome WebDriver with fallback: {e2}", level=logging.ERROR)
-                raise RuntimeError("Could not initialize WebDriver. Please ensure Chrome and ChromeDriver are installed.")
-    
+            self.logger.log_message(f"Failed to initialize Chrome WebDriver from local files: {e}", level=logging.ERROR)
+            raise RuntimeError("Could not initialize WebDriver from local files.")
+
     def _extract_courses_from_page(self, html_content):
         """Extracts course information from the page HTML."""
         soup = BeautifulSoup(html_content, "html.parser")
@@ -330,14 +336,14 @@ class CourseScraper:
                 # Wait for the course articles to load
                 wait_time = 20  # Seconds to wait for page load
                 try:
-                    WebDriverWait(self.driver, wait_time).until(
-                        EC.presence_of_element_located((By.CSS_SELECTOR, "article"))
+                    cookie_button = WebDriverWait(self.driver, 10).until(
+                        EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Accept All')]"))
                     )
-                    self.logger.log_message(f"Course content loaded on initial page for {subject_name}.")
-                    time.sleep(3)  # Small delay for render completion
+                    cookie_button.click()
+                    self.logger.log_message("Successfully clicked the 'Accept All' cookie button.")
+                    time.sleep(2)  # Wait a moment for the banner to disappear
                 except TimeoutException:
-                    self.logger.log_message(f"Timed out waiting for course content on initial page for {subject_name}. Skipping.", level=logging.WARNING)
-                    continue
+                    self.logger.log_message("Cookie button not found or not clickable, proceeding anyway.")
 
                 # Process the first page
                 courses_on_page = self._extract_courses_from_page(self.driver.page_source)
@@ -476,11 +482,7 @@ class CourseScraper:
                 
                 # Create and run a ContentScraper for this course
                 scraper = ContentScraper(course_url=course_url, download_dir=subject_dir)
-                try:
-                    result = scraper.run()
-                finally:
-                    # Always cleanup resources
-                    scraper.cleanup()
+                result = scraper.run()
                 
                 if result:
                     # 检查是否有新内容被处理
@@ -675,10 +677,6 @@ class CourseScraper:
                     self.logger.log_message("Browser closed.")
                 except:
                     pass
-            
-            # Cleanup logger resources
-            if hasattr(self, 'logger'):
-                self.logger.cleanup()
 
     def remove_empty_files_and_folders(self):
         """Removes empty files and folders in the download directory."""

@@ -48,6 +48,17 @@ class Logger:
     def disable_logging(self):
         self.logger.disabled = True
 
+    def cleanup(self):
+        """Close all file handlers and clean up resources."""
+        for handler in self.logger.handlers[:]:
+            if isinstance(handler, logging.FileHandler):
+                handler.close()
+                self.logger.removeHandler(handler)
+    
+    def __del__(self):
+        """Cleanup when object is destroyed."""
+        self.cleanup()
+
 
 def log_time(func):
     def wrapper(*args, **kwargs):

@@ -1,0 +1,12 @@
+{
+  "timestamp": "2025-07-09 01:39:05",
+  "task_id": "b233e473",
+  "urls": [
+    "https://ocw.mit.edu/search/?l=Non-Credit"
+  ],
+  "stage": "processing",
+  "detail": "正在处理 242/338: Brain and Cognitive Sciences Computational Tutorial Series",
+  "total_courses_found": 338,
+  "total_courses_processed": 241,
+  "total_courses_failed": 0
+}
