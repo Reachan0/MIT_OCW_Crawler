@@ -49,6 +49,8 @@ def parse_args():
                        help=f'Directory to save downloaded content (default: {DEFAULT_DOWNLOAD_DIR})')
     parser.add_argument('--force-refresh', action='store_true',
                        help='Force refresh all content - deletes existing downloaded data and progress files')
+    parser.add_argument('--incremental', action='store_true',
+                       help='Enable incremental crawling - only crawl new courses not found in previous runs')
     
     # 分布式抓取选项
     distributed_group = parser.add_argument_group('Distributed Scraping Options')
@@ -131,7 +133,8 @@ def main():
             subject_urls=subject_urls,
             download_dir=args.download_dir,
             query_url=args.query_url,
-            max_courses_per_subject=max_courses_per_subject
+            max_courses_per_subject=max_courses_per_subject,
+            incremental=args.incremental
         )
         result = scraper.run(max_total_courses=max_total_courses)
         if result:

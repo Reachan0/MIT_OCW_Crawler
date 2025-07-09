@@ -1,12 +1,12 @@
 {
-  "timestamp": "2025-07-09 12:03:52",
+  "timestamp": "2025-07-09 15:02:24",
   "task_id": "b233e473",
   "urls": [
     "https://ocw.mit.edu/search/?l=Non-Credit"
   ],
-  "stage": "processing",
-  "detail": "正在处理 26/64: How to Process, Analyze and Visualize Data",
+  "stage": "complete",
+  "detail": "爬虫完成",
   "total_courses_found": 64,
-  "total_courses_processed": 25,
+  "total_courses_processed": 64,
   "total_courses_failed": 0
 }

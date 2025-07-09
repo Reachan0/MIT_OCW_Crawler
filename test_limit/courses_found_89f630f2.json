@@ -1,0 +1,2026 @@
+{
+  "timestamp": "2025-07-09 15:57:05",
+  "task_id": "89f630f2",
+  "urls": [
+    "https://ocw.mit.edu/search/?t=Computer%20Science"
+  ],
+  "total_courses_found": 288,
+  "courses": [
+    {
+      "title": "Research Seminar on Urban Information Systems",
+      "url": "https://ocw.mit.edu/courses/11-522-research-seminar-on-urban-information-systems-fall-2005/",
+      "info": "11.522 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "A Gentle Introduction to Programming Using Python",
+      "url": "https://ocw.mit.edu/courses/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2011/",
+      "info": "6.189 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computer System Engineering",
+      "url": "https://ocw.mit.edu/courses/6-033-computer-system-engineering-spring-2018/",
+      "info": "6.033 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Microelectronic Devices and Circuits",
+      "url": "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2009/",
+      "info": "6.012 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Programming in Java",
+      "url": "https://ocw.mit.edu/courses/6-092-introduction-to-programming-in-java-january-iap-2010/",
+      "info": "6.092 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Numerical Analysis for Engineering (13.002J)",
+      "url": "https://ocw.mit.edu/courses/2-993j-introduction-to-numerical-analysis-for-engineering-13-002j-spring-2005/",
+      "info": "2.993J | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Cryptography and Cryptanalysis",
+      "url": "https://ocw.mit.edu/courses/6-875-cryptography-and-cryptanalysis-spring-2005/",
+      "info": "6.875 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Multithreaded Parallelism: Languages and Compilers",
+      "url": "https://ocw.mit.edu/courses/6-827-multithreaded-parallelism-languages-and-compilers-fall-2002/",
+      "info": "6.827 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "High Speed Communication Circuits and Systems",
+      "url": "https://ocw.mit.edu/courses/6-976-high-speed-communication-circuits-and-systems-spring-2003/",
+      "info": "6.976 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Planning, Communications, and Digital Media",
+      "url": "https://ocw.mit.edu/courses/11-204-planning-communications-and-digital-media-fall-2004/",
+      "info": "11.204 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Advanced Algorithms",
+      "url": "https://ocw.mit.edu/courses/6-854j-advanced-algorithms-fall-2008/",
+      "info": "6.854J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computer Graphics",
+      "url": "https://ocw.mit.edu/courses/6-837-computer-graphics-fall-2012/",
+      "info": "6.837 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Numerical Methods Applied to Chemical Engineering",
+      "url": "https://ocw.mit.edu/courses/10-34-numerical-methods-applied-to-chemical-engineering-fall-2015/",
+      "info": "10.34 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computer Games and Simulations for Education and Exploration",
+      "url": "https://ocw.mit.edu/courses/11-127j-computer-games-and-simulations-for-education-and-exploration-spring-2015/",
+      "info": "11.127J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Computer Science and Programming",
+      "url": "https://ocw.mit.edu/courses/6-00-introduction-to-computer-science-and-programming-fall-2008/",
+      "info": "6.00 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Database Systems",
+      "url": "https://ocw.mit.edu/courses/6-830-database-systems-fall-2010/",
+      "info": "6.830 | Graduate, Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Principles of Autonomy and Decision Making",
+      "url": "https://ocw.mit.edu/courses/16-410-principles-of-autonomy-and-decision-making-fall-2010/",
+      "info": "16.410 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "The Software Business",
+      "url": "https://ocw.mit.edu/courses/15-358-the-software-business-fall-2005/",
+      "info": "15.358 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Communication System Design",
+      "url": "https://ocw.mit.edu/courses/6-973-communication-system-design-spring-2006/",
+      "info": "6.973 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Logic II",
+      "url": "https://ocw.mit.edu/courses/24-242-logic-ii-spring-2004/",
+      "info": "24.242 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Knowledge-Based Applications Systems",
+      "url": "https://ocw.mit.edu/courses/6-871-knowledge-based-applications-systems-spring-2005/",
+      "info": "6.871 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Prediction: Machine Learning and Statistics",
+      "url": "https://ocw.mit.edu/courses/15-097-prediction-machine-learning-and-statistics-spring-2012/",
+      "info": "15.097 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computational Geometry",
+      "url": "https://ocw.mit.edu/courses/2-158j-computational-geometry-spring-2003/",
+      "info": "2.158J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Combinatorial Optimization",
+      "url": "https://ocw.mit.edu/courses/18-433-combinatorial-optimization-fall-2003/",
+      "info": "18.433 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Creating Video Games",
+      "url": "https://ocw.mit.edu/courses/cms-611j-creating-video-games-fall-2014/",
+      "info": "CMS.611J | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Blockchain and Money",
+      "url": "https://ocw.mit.edu/courses/15-s12-blockchain-and-money-fall-2018/",
+      "info": "15.S12 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computational Models of Discourse",
+      "url": "https://ocw.mit.edu/courses/6-892-computational-models-of-discourse-spring-2004/",
+      "info": "6.892 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Hands-On Astronomy: Observing Stars and Planets",
+      "url": "https://ocw.mit.edu/courses/12-409-hands-on-astronomy-observing-stars-and-planets-spring-2002/",
+      "info": "12.409 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Mobile Autonomous Systems Laboratory",
+      "url": "https://ocw.mit.edu/courses/6-186-mobile-autonomous-systems-laboratory-january-iap-2005/",
+      "info": "6.186 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to EECS II: Digital Communication Systems",
+      "url": "https://ocw.mit.edu/courses/6-02-introduction-to-eecs-ii-digital-communication-systems-fall-2012/",
+      "info": "6.02 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Mathematics of Machine Learning",
+      "url": "https://ocw.mit.edu/courses/18-657-mathematics-of-machine-learning-fall-2015/",
+      "info": "18.657 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Affective Computing",
+      "url": "https://ocw.mit.edu/courses/mas-630-affective-computing-fall-2015/",
+      "info": "MAS.630 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Computers and Engineering Problem Solving",
+      "url": "https://ocw.mit.edu/courses/1-00-introduction-to-computers-and-engineering-problem-solving-spring-2012/",
+      "info": "1.00 | Undergraduate, Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Computer Science and Programming in Python",
+      "url": "https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/",
+      "info": "6.0001 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "The History of Computing",
+      "url": "https://ocw.mit.edu/courses/sts-035-the-history-of-computing-spring-2004/",
+      "info": "STS.035 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Parallel Computing",
+      "url": "https://ocw.mit.edu/courses/18-337j-parallel-computing-fall-2011/",
+      "info": "18.337J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Data, Models, and Decisions",
+      "url": "https://ocw.mit.edu/courses/15-060-data-models-and-decisions-fall-2014/",
+      "info": "15.060 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computer Systems Security",
+      "url": "https://ocw.mit.edu/courses/6-858-computer-systems-security-fall-2014/",
+      "info": "6.858 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computing for Biomedical Scientists",
+      "url": "https://ocw.mit.edu/courses/hst-952-computing-for-biomedical-scientists-fall-2002/",
+      "info": "HST.952 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Biomedical Information Technology",
+      "url": "https://ocw.mit.edu/courses/20-453j-biomedical-information-technology-fall-2008/",
+      "info": "20.453J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Topics in Mathematics of Data Science",
+      "url": "https://ocw.mit.edu/courses/18-s096-topics-in-mathematics-of-data-science-fall-2015/",
+      "info": "18.S096 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Software Engineering Concepts",
+      "url": "https://ocw.mit.edu/courses/16-355j-software-engineering-concepts-fall-2005/",
+      "info": "16.355J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Practical Programming in C",
+      "url": "https://ocw.mit.edu/courses/6-087-practical-programming-in-c-january-iap-2010/",
+      "info": "6.087 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "System Design and Analysis based on AD and Complexity Theories",
+      "url": "https://ocw.mit.edu/courses/2-882-system-design-and-analysis-based-on-ad-and-complexity-theories-spring-2005/",
+      "info": "2.882 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Analysis and Design of Digital Integrated Circuits",
+      "url": "https://ocw.mit.edu/courses/6-374-analysis-and-design-of-digital-integrated-circuits-fall-2003/",
+      "info": "6.374 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "The Mathematics in Toys and Games",
+      "url": "https://ocw.mit.edu/courses/es-268-the-mathematics-in-toys-and-games-spring-2010/",
+      "info": "ES.268 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computer Networks",
+      "url": "https://ocw.mit.edu/courses/6-829-computer-networks-fall-2002/",
+      "info": "6.829 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to MATLAB",
+      "url": "https://ocw.mit.edu/courses/6-057-introduction-to-matlab-january-iap-2019/",
+      "info": "6.057 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to C++",
+      "url": "https://ocw.mit.edu/courses/6-096-introduction-to-c-january-iap-2011/",
+      "info": "6.096 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Mathematical Programming",
+      "url": "https://ocw.mit.edu/courses/6-251j-introduction-to-mathematical-programming-fall-2009/",
+      "info": "6.251J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Geometric Folding Algorithms: Linkages, Origami, Polyhedra",
+      "url": "https://ocw.mit.edu/courses/6-849-geometric-folding-algorithms-linkages-origami-polyhedra-fall-2012/",
+      "info": "6.849 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Information Technology Essentials",
+      "url": "https://ocw.mit.edu/courses/15-561-information-technology-essentials-spring-2005/",
+      "info": "15.561 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Spatial Database Management and Advanced Geographic Information Systems",
+      "url": "https://ocw.mit.edu/courses/11-521-spatial-database-management-and-advanced-geographic-information-systems-spring-2003/",
+      "info": "11.521 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Autism Theory and Technology",
+      "url": "https://ocw.mit.edu/courses/mas-771-autism-theory-and-technology-spring-2011/",
+      "info": "MAS.771 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Distributed Computer Systems Engineering",
+      "url": "https://ocw.mit.edu/courses/6-824-distributed-computer-systems-engineering-spring-2006/",
+      "info": "6.824 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Pervasive Human Centric Computing (SMA 5508)",
+      "url": "https://ocw.mit.edu/courses/6-883-pervasive-human-centric-computing-sma-5508-spring-2006/",
+      "info": "6.883 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Models, Data and Inference for Socio-Technical Systems",
+      "url": "https://ocw.mit.edu/courses/esd-86-models-data-and-inference-for-socio-technical-systems-spring-2007/",
+      "info": "ESD.86 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Software Engineering for Web Applications",
+      "url": "https://ocw.mit.edu/courses/6-171-software-engineering-for-web-applications-fall-2003/",
+      "info": "6.171 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Workshop in IT: Collaborative Innovation Networks",
+      "url": "https://ocw.mit.edu/courses/15-599-workshop-in-it-collaborative-innovation-networks-fall-2011/",
+      "info": "15.599 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "The Art of Approximation in Science and Engineering",
+      "url": "https://ocw.mit.edu/courses/6-055j-the-art-of-approximation-in-science-and-engineering-spring-2008/",
+      "info": "6.055J | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Gödel, Escher, Bach",
+      "url": "https://ocw.mit.edu/courses/es-258-goedel-escher-bach-spring-2007/",
+      "info": "ES.258 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Foundations of Software Engineering",
+      "url": "https://ocw.mit.edu/courses/1-124j-foundations-of-software-engineering-fall-2000/",
+      "info": "1.124J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Experimental Projects I",
+      "url": "https://ocw.mit.edu/courses/16-621-experimental-projects-i-spring-2003/",
+      "info": "16.621 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Dynamics of Nonlinear Systems",
+      "url": "https://ocw.mit.edu/courses/6-243j-dynamics-of-nonlinear-systems-fall-2003/",
+      "info": "6.243J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Medical Computing",
+      "url": "https://ocw.mit.edu/courses/hst-950j-medical-computing-spring-2003/",
+      "info": "HST.950J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Computer Science and Programming",
+      "url": "https://ocw.mit.edu/courses/6-00sc-introduction-to-computer-science-and-programming-spring-2011/",
+      "info": "6.00SC | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Programming Languages",
+      "url": "https://ocw.mit.edu/courses/6-821-programming-languages-fall-2002/",
+      "info": "6.821 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Statistical Learning Theory and Applications",
+      "url": "https://ocw.mit.edu/courses/9-520-statistical-learning-theory-and-applications-spring-2003/",
+      "info": "9.520 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Program Analysis",
+      "url": "https://ocw.mit.edu/courses/6-883-program-analysis-fall-2005/",
+      "info": "6.883 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Theory of Parallel Systems (SMA 5509)",
+      "url": "https://ocw.mit.edu/courses/6-895-theory-of-parallel-systems-sma-5509-fall-2003/",
+      "info": "6.895 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Elements of Software Construction",
+      "url": "https://ocw.mit.edu/courses/6-005-elements-of-software-construction-fall-2008/",
+      "info": "6.005 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Numeric Photography",
+      "url": "https://ocw.mit.edu/courses/mas-961-numeric-photography-fall-1998/",
+      "info": "MAS.961 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Out of Context: A Course on Computer Systems That Adapt To, and Learn From, Context",
+      "url": "https://ocw.mit.edu/courses/mas-963-out-of-context-a-course-on-computer-systems-that-adapt-to-and-learn-from-context-fall-2001/",
+      "info": "MAS.963 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Algorithms for Computational Biology",
+      "url": "https://ocw.mit.edu/courses/6-096-algorithms-for-computational-biology-spring-2005/",
+      "info": "6.096 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Topics in Theoretical Computer Science: An Algorithmist's Toolkit",
+      "url": "https://ocw.mit.edu/courses/18-409-topics-in-theoretical-computer-science-an-algorithmists-toolkit-fall-2009/",
+      "info": "18.409 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Behavior of Algorithms",
+      "url": "https://ocw.mit.edu/courses/18-409-behavior-of-algorithms-spring-2002/",
+      "info": "18.409 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Numerical Computation for Mechanical Engineers",
+      "url": "https://ocw.mit.edu/courses/2-086-numerical-computation-for-mechanical-engineers-spring-2013/",
+      "info": "2.086 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Music and Technology: Algorithmic and Generative Music",
+      "url": "https://ocw.mit.edu/courses/21m-380-music-and-technology-algorithmic-and-generative-music-spring-2010/",
+      "info": "21M.380 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Algorithms (SMA 5503)",
+      "url": "https://ocw.mit.edu/courses/6-046j-introduction-to-algorithms-sma-5503-fall-2005/",
+      "info": "6.046J | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introductory Digital Systems Laboratory",
+      "url": "https://ocw.mit.edu/courses/6-111-introductory-digital-systems-laboratory-fall-2002/",
+      "info": "6.111 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "A Gentle Introduction to Programming Using Python",
+      "url": "https://ocw.mit.edu/courses/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2008/",
+      "info": "6.189 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Information Theory",
+      "url": "https://ocw.mit.edu/courses/6-441-information-theory-spring-2010/",
+      "info": "6.441 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Representation and Modeling for Image Analysis",
+      "url": "https://ocw.mit.edu/courses/6-881-representation-and-modeling-for-image-analysis-spring-2005/",
+      "info": "6.881 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computation Structures",
+      "url": "https://ocw.mit.edu/courses/6-004-computation-structures-spring-2009/",
+      "info": "6.004 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Algorithms",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+      "info": "6.006 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Machine Learning",
+      "url": "https://ocw.mit.edu/courses/6-036-introduction-to-machine-learning-fall-2020/",
+      "info": "6.036 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Machine Vision",
+      "url": "https://ocw.mit.edu/courses/6-801-machine-vision-fall-2020/",
+      "info": "6.801 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Machine Learning for Inverse Graphics",
+      "url": "https://ocw.mit.edu/courses/6-s980-machine-learning-for-inverse-graphics-fall-2022/",
+      "info": "6.S980 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Computational Thinking",
+      "url": "https://ocw.mit.edu/courses/18-s191-introduction-to-computational-thinking-fall-2022/",
+      "info": "18.S191 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Algorithm Engineering",
+      "url": "https://ocw.mit.edu/courses/6-5060-algorithm-engineering-spring-2023/",
+      "info": "6.5060 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Ethics of Technology",
+      "url": "https://ocw.mit.edu/courses/24-131-ethics-of-technology-spring-2023/",
+      "info": "24.131 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Parallel Programming for Multicore Machines Using OpenMP and MPI",
+      "url": "https://ocw.mit.edu/courses/12-950-parallel-programming-for-multicore-machines-using-openmp-and-mpi-january-iap-2010/",
+      "info": "12.950 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computer System Architecture",
+      "url": "https://ocw.mit.edu/courses/6-823-computer-system-architecture-fall-2005/",
+      "info": "6.823 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Java Preparation for 6.170",
+      "url": "https://ocw.mit.edu/courses/6-092-java-preparation-for-6-170-january-iap-2006/",
+      "info": "6.092 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Ethics for Engineers: Artificial Intelligence",
+      "url": "https://ocw.mit.edu/courses/10-01-ethics-for-engineers-artificial-intelligence-spring-2020/",
+      "info": "10.01 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Collaborative Design and Creative Expression with Arduino Microcontrollers",
+      "url": "https://ocw.mit.edu/courses/res-3-002-collaborative-design-and-creative-expression-with-arduino-microcontrollers-january-iap-2017/",
+      "info": "RES.3-002 | Non-Credit",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Day of AI",
+      "url": "https://ocw.mit.edu/courses/res-mas-002-day-of-ai-spring-2022/",
+      "info": "RES.MAS-002 | Non-Credit",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Brave New Planet",
+      "url": "https://ocw.mit.edu/courses/res-7-003-brave-new-planet-fall-2020/",
+      "info": "RES.7-003 | Non-Credit",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to MATLAB",
+      "url": "https://ocw.mit.edu/courses/res-18-002-introduction-to-matlab-spring-2008/",
+      "info": "RES.18-002 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Media Literacy in the Age of Deepfakes",
+      "url": "https://ocw.mit.edu/courses/res-cms-001-media-literacy-in-the-age-of-deepfakes-spring-2021/",
+      "info": "RES.CMS-001 | Non-Credit",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Advanced Topics in Cryptography",
+      "url": "https://ocw.mit.edu/courses/6-5630-advanced-topics-in-cryptography-fall-2023/",
+      "info": "6.5630 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction To MATLAB Programming",
+      "url": "https://ocw.mit.edu/courses/18-s997-introduction-to-matlab-programming-fall-2011/",
+      "info": "18.S997 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Case Studies in Social and Ethical Responsibilities of Computing",
+      "url": "https://ocw.mit.edu/courses/res-tll-007-case-studies-in-social-and-ethical-responsibilities-of-computing-fall-2021/",
+      "info": "RES.TLL-007 | Non-Credit",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "How to Process, Analyze and Visualize Data",
+      "url": "https://ocw.mit.edu/courses/res-6-009-how-to-process-analyze-and-visualize-data-january-iap-2012/",
+      "info": "RES.6-009 | Non-Credit",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Statistics and Visualization for Data Analysis and Inference",
+      "url": "https://ocw.mit.edu/courses/res-9-0002-statistics-and-visualization-for-data-analysis-and-inference-january-iap-2009/",
+      "info": "RES.9-0002 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Ethics of AI Bias",
+      "url": "https://ocw.mit.edu/courses/res-10-002-ethics-of-ai-bias-spring-2023/",
+      "info": "RES.10-002 | Non-Credit",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Learn to Build Your Own Videogame with the Unity Game Engine and Microsoft Kinect",
+      "url": "https://ocw.mit.edu/courses/res-3-003-learn-to-build-your-own-videogame-with-the-unity-game-engine-and-microsoft-kinect-january-iap-2017/",
+      "info": "RES.3-003 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Principles of Computer System Design: An Introduction",
+      "url": "https://ocw.mit.edu/courses/res-6-004-principles-of-computer-system-design-an-introduction-spring-2009/",
+      "info": "RES.6-033 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "STAR: Software Tools for Academics and Researchers",
+      "url": "https://ocw.mit.edu/courses/res-tl-002-star-software-tools-for-academics-and-researchers-spring-2012/",
+      "info": "RES.TLL-002 | Non-Credit",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Operating System Engineering",
+      "url": "https://ocw.mit.edu/courses/6-1810-operating-system-engineering-fall-2023/",
+      "info": "6.1810 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Exploring Fairness in Machine Learning for International Development",
+      "url": "https://ocw.mit.edu/courses/res-ec-001-exploring-fairness-in-machine-learning-for-international-development-spring-2020/",
+      "info": "RES.EC-001 | Non-Credit",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Operating System Engineering",
+      "url": "https://ocw.mit.edu/courses/6-828-operating-system-engineering-fall-2012/",
+      "info": "6.828 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Randomized Algorithms",
+      "url": "https://ocw.mit.edu/courses/6-856j-randomized-algorithms-fall-2002/",
+      "info": "6.856J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Medical Artificial Intelligence",
+      "url": "https://ocw.mit.edu/courses/hst-947-medical-artificial-intelligence-spring-2005/",
+      "info": "HST.947 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Essential Coding Theory",
+      "url": "https://ocw.mit.edu/courses/6-895-essential-coding-theory-fall-2004/",
+      "info": "6.895 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computational Methods of Scientific Programming",
+      "url": "https://ocw.mit.edu/courses/12-010-computational-methods-of-scientific-programming-fall-2011/",
+      "info": "12.010 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Design Computing",
+      "url": "https://ocw.mit.edu/courses/4-500-introduction-to-design-computing-fall-2008/",
+      "info": "4.500 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Software Studio",
+      "url": "https://ocw.mit.edu/courses/6-170-software-studio-spring-2013/",
+      "info": "6.170 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computer Language Engineering",
+      "url": "https://ocw.mit.edu/courses/6-035-computer-language-engineering-spring-2010/",
+      "info": "6.035 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Experimental Projects II",
+      "url": "https://ocw.mit.edu/courses/16-622-experimental-projects-ii-fall-2003/",
+      "info": "16.622 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Design and Analysis of Algorithms",
+      "url": "https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/",
+      "info": "6.046J | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Nonlinear Programming",
+      "url": "https://ocw.mit.edu/courses/6-252j-nonlinear-programming-spring-2003/",
+      "info": "6.252J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Quantum Complexity Theory",
+      "url": "https://ocw.mit.edu/courses/6-845-quantum-complexity-theory-fall-2010/",
+      "info": "6.845 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Software Construction",
+      "url": "https://ocw.mit.edu/courses/6-005-software-construction-spring-2016/",
+      "info": "6.005 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Advanced Data Structures",
+      "url": "https://ocw.mit.edu/courses/6-851-advanced-data-structures-spring-2012/",
+      "info": "6.851 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Computational Thinking and Data Science",
+      "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+      "info": "6.0002 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Communication Systems Engineering",
+      "url": "https://ocw.mit.edu/courses/16-36-communication-systems-engineering-spring-2009/",
+      "info": "16.36 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Adventures in Advanced Symbolic Programming",
+      "url": "https://ocw.mit.edu/courses/6-945-adventures-in-advanced-symbolic-programming-spring-2009/",
+      "info": "6.945 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Principles and Practice of Assistive Technology",
+      "url": "https://ocw.mit.edu/courses/6-811-principles-and-practice-of-assistive-technology-fall-2014/",
+      "info": "6.811 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Scientific Visualization across Disciplines: A Critical Introduction",
+      "url": "https://ocw.mit.edu/courses/sts-067-scientific-visualization-across-disciplines-a-critical-introduction-spring-2005/",
+      "info": "STS.067 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Human Supervisory Control of Automated Systems",
+      "url": "https://ocw.mit.edu/courses/16-422-human-supervisory-control-of-automated-systems-spring-2004/",
+      "info": "16.422 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Advanced Complexity Theory",
+      "url": "https://ocw.mit.edu/courses/18-405j-advanced-complexity-theory-spring-2016/",
+      "info": "18.405J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Foundations of Algorithms and Computational Techniques in Systems Biology",
+      "url": "https://ocw.mit.edu/courses/20-482j-foundations-of-algorithms-and-computational-techniques-in-systems-biology-spring-2006/",
+      "info": "20.482J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Topics in Statistics: Statistical Learning Theory",
+      "url": "https://ocw.mit.edu/courses/18-465-topics-in-statistics-statistical-learning-theory-spring-2007/",
+      "info": "18.465 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Statistical Thinking and Data Analysis",
+      "url": "https://ocw.mit.edu/courses/15-075j-statistical-thinking-and-data-analysis-fall-2011/",
+      "info": "15.075J | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Geometric Combinatorics",
+      "url": "https://ocw.mit.edu/courses/18-319-geometric-combinatorics-fall-2005/",
+      "info": "18.319 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Near-Surface Geophysical Imaging",
+      "url": "https://ocw.mit.edu/courses/12-571-near-surface-geophysical-imaging-fall-2009/",
+      "info": "12.571 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Ethics and the Law on the Electronic Frontier",
+      "url": "https://ocw.mit.edu/courses/6-805-ethics-and-the-law-on-the-electronic-frontier-fall-2005/",
+      "info": "6.805 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "The Battlecode Programming Competition",
+      "url": "https://ocw.mit.edu/courses/6-370-the-battlecode-programming-competition-january-iap-2013/",
+      "info": "6.370 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Network and Computer Security",
+      "url": "https://ocw.mit.edu/courses/6-857-network-and-computer-security-spring-2014/",
+      "info": "6.857 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computing and Data Analysis for Environmental Applications",
+      "url": "https://ocw.mit.edu/courses/1-017-computing-and-data-analysis-for-environmental-applications-fall-2003/",
+      "info": "1.017 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Special Topics in Vision Science",
+      "url": "https://ocw.mit.edu/courses/9-357-special-topics-in-vision-science-fall-2001/",
+      "info": "9.357 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Management of Services: Concepts, Design, and Delivery",
+      "url": "https://ocw.mit.edu/courses/15-768-management-of-services-concepts-design-and-delivery-fall-2010/",
+      "info": "15.768 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Advanced Natural Language Processing",
+      "url": "https://ocw.mit.edu/courses/6-864-advanced-natural-language-processing-fall-2005/",
+      "info": "6.864 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Communicating With Data",
+      "url": "https://ocw.mit.edu/courses/15-063-communicating-with-data-summer-2003/",
+      "info": "15.063 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Multivariable Control Systems",
+      "url": "https://ocw.mit.edu/courses/6-245-multivariable-control-systems-spring-2004/",
+      "info": "6.245 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Special Problems in Architectural Design",
+      "url": "https://ocw.mit.edu/courses/4-195-special-problems-in-architectural-design-spring-2005/",
+      "info": "4.195 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Performance Engineering of Software Systems",
+      "url": "https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/",
+      "info": "6.172 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "High Speed Communication Circuits",
+      "url": "https://ocw.mit.edu/courses/6-776-high-speed-communication-circuits-spring-2005/",
+      "info": "6.776 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Theory of Parallel Hardware (SMA 5511)",
+      "url": "https://ocw.mit.edu/courses/6-896-theory-of-parallel-hardware-sma-5511-spring-2004/",
+      "info": "6.896 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Modeling and Assessment for Policy",
+      "url": "https://ocw.mit.edu/courses/ids-410j-modeling-and-assessment-for-policy-spring-2013/",
+      "info": "IDS.410J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Biological Engineering Programming",
+      "url": "https://ocw.mit.edu/courses/20-180-biological-engineering-programming-spring-2006/",
+      "info": "20.180 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Digital Humanities",
+      "url": "https://ocw.mit.edu/courses/cms-633-digital-humanities-spring-2015/",
+      "info": "CMS.633 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Principles of Computer Systems",
+      "url": "https://ocw.mit.edu/courses/6-826-principles-of-computer-systems-spring-2002/",
+      "info": "6.826 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Applied Econometrics: Mostly Harmless Big Data",
+      "url": "https://ocw.mit.edu/courses/14-387-applied-econometrics-mostly-harmless-big-data-fall-2014/",
+      "info": "14.387 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Algorithms",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/",
+      "info": "6.006 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Technology and Cities",
+      "url": "https://ocw.mit.edu/courses/11-501-introduction-to-technology-and-cities-fall-2002/",
+      "info": "11.501 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computational Camera and Photography",
+      "url": "https://ocw.mit.edu/courses/mas-531-computational-camera-and-photography-fall-2009/",
+      "info": "MAS.531 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Algorithms for Computer Animation",
+      "url": "https://ocw.mit.edu/courses/6-838-algorithms-for-computer-animation-fall-2002/",
+      "info": "6.838 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Advanced Topics in Cryptography",
+      "url": "https://ocw.mit.edu/courses/6-876j-advanced-topics-in-cryptography-spring-2003/",
+      "info": "6.876J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Complex Digital Systems",
+      "url": "https://ocw.mit.edu/courses/6-884-complex-digital-systems-spring-2005/",
+      "info": "6.884 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Information Technology I",
+      "url": "https://ocw.mit.edu/courses/15-564-information-technology-i-spring-2003/",
+      "info": "15.564 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Programming for the Puzzled",
+      "url": "https://ocw.mit.edu/courses/6-s095-programming-for-the-puzzled-january-iap-2018/",
+      "info": "6.S095 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Transcribing Prosodic Structure of Spoken Utterances with ToBI",
+      "url": "https://ocw.mit.edu/courses/6-911-transcribing-prosodic-structure-of-spoken-utterances-with-tobi-january-iap-2006/",
+      "info": "6.911 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Algorithmic Lower Bounds: Fun with Hardness Proofs",
+      "url": "https://ocw.mit.edu/courses/6-890-algorithmic-lower-bounds-fun-with-hardness-proofs-fall-2014/",
+      "info": "6.890 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Effective Programming in C and C++",
+      "url": "https://ocw.mit.edu/courses/6-s096-effective-programming-in-c-and-c-january-iap-2014/",
+      "info": "6.S096 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Machine Learning for Healthcare",
+      "url": "https://ocw.mit.edu/courses/6-s897-machine-learning-for-healthcare-spring-2019/",
+      "info": "6.S897 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Computational Thinking with Julia, with Applications to Modeling the COVID-19 Pandemic",
+      "url": "https://ocw.mit.edu/courses/18-s190-introduction-to-computational-thinking-with-julia-with-applications-to-modeling-the-covid-19-pandemic-spring-2020/",
+      "info": "18.S190 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Holographic Imaging",
+      "url": "https://ocw.mit.edu/courses/mas-450-holographic-imaging-spring-2003/",
+      "info": "MAS.450 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to C and C++",
+      "url": "https://ocw.mit.edu/courses/6-s096-introduction-to-c-and-c-january-iap-2013/",
+      "info": "6.S096 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Ambient Intelligence",
+      "url": "https://ocw.mit.edu/courses/mas-961-ambient-intelligence-spring-2005/",
+      "info": "MAS.961 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Artificial Intelligence",
+      "url": "https://ocw.mit.edu/courses/6-034-artificial-intelligence-spring-2005/",
+      "info": "6.034 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Relational Machines",
+      "url": "https://ocw.mit.edu/courses/mas-965-relational-machines-spring-2005/",
+      "info": "MAS.965 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Algorithms",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2008/",
+      "info": "6.006 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Mathematics for Computer Science",
+      "url": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/",
+      "info": "6.042J | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Mathematics for Computer Science",
+      "url": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2005/",
+      "info": "6.042J | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Decision Making in Large Scale Systems",
+      "url": "https://ocw.mit.edu/courses/2-997-decision-making-in-large-scale-systems-spring-2004/",
+      "info": "2.997 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Music and Technology: Live Electronics Performance Practices",
+      "url": "https://ocw.mit.edu/courses/21m-380-music-and-technology-live-electronics-performance-practices-spring-2011/",
+      "info": "21M.380 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Topics in Theoretical Computer Science : Internet Research Problems",
+      "url": "https://ocw.mit.edu/courses/18-996-topics-in-theoretical-computer-science-internet-research-problems-spring-2002/",
+      "info": "18.996 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Laboratory in Software Engineering",
+      "url": "https://ocw.mit.edu/courses/6-170-laboratory-in-software-engineering-fall-2005/",
+      "info": "6.170 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Environmental Engineering Applications of Geographic Information Systems",
+      "url": "https://ocw.mit.edu/courses/1-963-environmental-engineering-applications-of-geographic-information-systems-fall-2004/",
+      "info": "1.963 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Visual Navigation for Autonomous Vehicles (VNAV)",
+      "url": "https://ocw.mit.edu/courses/16-485-visual-navigation-for-autonomous-vehicles-vnav-fall-2020/",
+      "info": "16.485 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Deep Learning",
+      "url": "https://ocw.mit.edu/courses/6-s191-introduction-to-deep-learning-january-iap-2020/",
+      "info": "6.S191 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Advanced Algorithms",
+      "url": "https://ocw.mit.edu/courses/6-854j-advanced-algorithms-fall-2005/",
+      "info": "6.854J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Mathematics for Computer Science",
+      "url": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/",
+      "info": "6.042J | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Networks",
+      "url": "https://ocw.mit.edu/courses/14-15-networks-spring-2022/",
+      "info": "14.15 | Undergraduate, Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Topics in Theoretical Computer Science: Probabilistically Checkable Proofs",
+      "url": "https://ocw.mit.edu/courses/18-408-topics-in-theoretical-computer-science-probabilistically-checkable-proofs-fall-2022/",
+      "info": "18.408 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Building Programming Experience: A Lead-In to 6.001",
+      "url": "https://ocw.mit.edu/courses/6-090-building-programming-experience-a-lead-in-to-6-001-january-iap-2005/",
+      "info": "6.090 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Global Health Informatics to Improve Quality of Care",
+      "url": "https://ocw.mit.edu/courses/hst-936x-global-health-informatics-to-improve-quality-of-care-spring-2020/",
+      "info": "HST.936x | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Foundation Models and Generative AI",
+      "url": "https://ocw.mit.edu/courses/6-s087-foundation-models-and-generative-ai-january-iap-2024/",
+      "info": "6.S087 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "AI 101",
+      "url": "https://ocw.mit.edu/courses/res-6-013-ai-101-fall-2021/",
+      "info": "RES.6-013 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Electrical Engineering and Computer Science I",
+      "url": "https://ocw.mit.edu/courses/6-01sc-introduction-to-electrical-engineering-and-computer-science-i-spring-2011/",
+      "info": "6.01SC | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to CS and Programming using Python",
+      "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+      "info": "6.100L | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "FinTech: Shaping the Financial World",
+      "url": "https://ocw.mit.edu/courses/15-s08-fintech-shaping-the-financial-world-spring-2020/",
+      "info": "15.S08 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computation Structures",
+      "url": "https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/",
+      "info": "6.004 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Computational Neuroscience with Neuroblox",
+      "url": "https://ocw.mit.edu/courses/res-9-009-introduction-to-computational-neuroscience-with-neuroblox-january-iap-2025/",
+      "info": "RES.9-009 | Graduate, Non-Credit",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "A Workshop on Geographic Information Systems",
+      "url": "https://ocw.mit.edu/courses/11-520-a-workshop-on-geographic-information-systems-fall-2005/",
+      "info": "11.520 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Autonomous Robot Design Competition",
+      "url": "https://ocw.mit.edu/courses/6-270-autonomous-robot-design-competition-january-iap-2005/",
+      "info": "6.270 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "The Human Intelligence Enterprise",
+      "url": "https://ocw.mit.edu/courses/6-803-the-human-intelligence-enterprise-spring-2019/",
+      "info": "6.803 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Cryptocurrency Engineering and Design",
+      "url": "https://ocw.mit.edu/courses/mas-s62-cryptocurrency-engineering-and-design-spring-2018/",
+      "info": "MAS.S62 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Algorithmic Aspects of Machine Learning",
+      "url": "https://ocw.mit.edu/courses/18-409-algorithmic-aspects-of-machine-learning-spring-2015/",
+      "info": "18.409 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Minds and Machines",
+      "url": "https://ocw.mit.edu/courses/24-09-minds-and-machines-fall-2011/",
+      "info": "24.09 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Database, Internet, and Systems Integration Technologies",
+      "url": "https://ocw.mit.edu/courses/1-264j-database-internet-and-systems-integration-technologies-fall-2013/",
+      "info": "1.264J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Convex Analysis and Optimization",
+      "url": "https://ocw.mit.edu/courses/6-253-convex-analysis-and-optimization-spring-2012/",
+      "info": "6.253 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Techniques in Artificial Intelligence (SMA 5504)",
+      "url": "https://ocw.mit.edu/courses/6-825-techniques-in-artificial-intelligence-sma-5504-fall-2002/",
+      "info": "6.825 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Machine Learning",
+      "url": "https://ocw.mit.edu/courses/6-867-machine-learning-fall-2006/",
+      "info": "6.867 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introductory Digital Systems Laboratory",
+      "url": "https://ocw.mit.edu/courses/6-111-introductory-digital-systems-laboratory-spring-2006/",
+      "info": "6.111 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Information and Entropy",
+      "url": "https://ocw.mit.edu/courses/6-050j-information-and-entropy-spring-2008/",
+      "info": "6.050J | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Networks",
+      "url": "https://ocw.mit.edu/courses/14-15j-networks-spring-2018/",
+      "info": "14.15J | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Numerical Computation for Mechanical Engineers",
+      "url": "https://ocw.mit.edu/courses/2-086-numerical-computation-for-mechanical-engineers-fall-2014/",
+      "info": "2.086 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "International Politics in the New Century - via Simulation, Interactive Gaming, and  'Edutainment'",
+      "url": "https://ocw.mit.edu/courses/17-914-international-politics-in-the-new-century-via-simulation-interactive-gaming-and-edutainment-january-iap-2005/",
+      "info": "17.914 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Distributed Algorithms",
+      "url": "https://ocw.mit.edu/courses/6-852j-distributed-algorithms-fall-2009/",
+      "info": "6.852J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Pattern Recognition for Machine Vision",
+      "url": "https://ocw.mit.edu/courses/9-913-pattern-recognition-for-machine-vision-fall-2004/",
+      "info": "9.913 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Information Theory",
+      "url": "https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/",
+      "info": "6.441 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "User Interface Design and Implementation",
+      "url": "https://ocw.mit.edu/courses/6-831-user-interface-design-and-implementation-spring-2011/",
+      "info": "6.831 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Common Sense Reasoning for Interactive Applications",
+      "url": "https://ocw.mit.edu/courses/mas-964-common-sense-reasoning-for-interactive-applications-fall-2002/",
+      "info": "MAS.964 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Dynamic Programming and Stochastic Control",
+      "url": "https://ocw.mit.edu/courses/6-231-dynamic-programming-and-stochastic-control-fall-2015/",
+      "info": "6.231 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Selected Topics in Cryptography",
+      "url": "https://ocw.mit.edu/courses/6-897-selected-topics-in-cryptography-spring-2004/",
+      "info": "6.897 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Artificial Intelligence",
+      "url": "https://ocw.mit.edu/courses/6-034-artificial-intelligence-fall-2010/",
+      "info": "6.034 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Human Factors Engineering",
+      "url": "https://ocw.mit.edu/courses/16-400-human-factors-engineering-fall-2011/",
+      "info": "16.400 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Quantifying Uncertainty",
+      "url": "https://ocw.mit.edu/courses/12-s990-quantifying-uncertainty-fall-2012/",
+      "info": "12.S990 | Undergraduate, Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Network Optimization",
+      "url": "https://ocw.mit.edu/courses/15-082j-network-optimization-fall-2010/",
+      "info": "15.082J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Numerical Methods",
+      "url": "https://ocw.mit.edu/courses/18-335j-introduction-to-numerical-methods-spring-2019/",
+      "info": "18.335J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Integrating eSystems & Global Information Systems",
+      "url": "https://ocw.mit.edu/courses/15-565j-integrating-esystems-global-information-systems-spring-2002/",
+      "info": "15.565J | Undergraduate, Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Error-Correcting Codes Laboratory",
+      "url": "https://ocw.mit.edu/courses/18-413-error-correcting-codes-laboratory-spring-2004/",
+      "info": "18.413 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Natural Language and the Computer Representation of Knowledge",
+      "url": "https://ocw.mit.edu/courses/6-863j-natural-language-and-the-computer-representation-of-knowledge-spring-2003/",
+      "info": "6.863J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Identification, Estimation, and Learning",
+      "url": "https://ocw.mit.edu/courses/2-160-identification-estimation-and-learning-spring-2006/",
+      "info": "2.160 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Dynamic Systems and Control",
+      "url": "https://ocw.mit.edu/courses/6-241j-dynamic-systems-and-control-spring-2011/",
+      "info": "6.241J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Machine Vision",
+      "url": "https://ocw.mit.edu/courses/6-801-machine-vision-fall-2004/",
+      "info": "6.801 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Data Communication Networks",
+      "url": "https://ocw.mit.edu/courses/6-263j-data-communication-networks-fall-2002/",
+      "info": "6.263J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Interactive Music Systems",
+      "url": "https://ocw.mit.edu/courses/21m-385-interactive-music-systems-fall-2016/",
+      "info": "21M.385 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Bioengineering Journal Article Seminar",
+      "url": "https://ocw.mit.edu/courses/16-459-bioengineering-journal-article-seminar-fall-2011/",
+      "info": "16.459 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Medical Decision Support",
+      "url": "https://ocw.mit.edu/courses/hst-951j-medical-decision-support-fall-2005/",
+      "info": "HST.951J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to C Memory Management and C++ Object-Oriented Programming",
+      "url": "https://ocw.mit.edu/courses/6-088-introduction-to-c-memory-management-and-c-object-oriented-programming-january-iap-2010/",
+      "info": "6.088 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Automata, Computability, and Complexity",
+      "url": "https://ocw.mit.edu/courses/6-045j-automata-computability-and-complexity-spring-2011/",
+      "info": "6.045J | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Systems Optimization: Models and Computation (SMA 5223)",
+      "url": "https://ocw.mit.edu/courses/15-094j-systems-optimization-models-and-computation-sma-5223-spring-2004/",
+      "info": "15.094J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Cognitive Robotics",
+      "url": "https://ocw.mit.edu/courses/16-412j-cognitive-robotics-spring-2016/",
+      "info": "16.412J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Conversational Computer Systems",
+      "url": "https://ocw.mit.edu/courses/mas-632-conversational-computer-systems-fall-2008/",
+      "info": "MAS.632 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Data Mining",
+      "url": "https://ocw.mit.edu/courses/15-062-data-mining-spring-2003/",
+      "info": "15.062 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Analysis and Design of Digital Control Systems",
+      "url": "https://ocw.mit.edu/courses/2-171-analysis-and-design-of-digital-control-systems-fall-2006/",
+      "info": "2.171 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Great Ideas in Theoretical Computer Science",
+      "url": "https://ocw.mit.edu/courses/6-080-great-ideas-in-theoretical-computer-science-spring-2008/",
+      "info": "6.080 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Topics in Combinatorial Optimization",
+      "url": "https://ocw.mit.edu/courses/18-997-topics-in-combinatorial-optimization-spring-2004/",
+      "info": "18.997 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Structure and Interpretation of Computer Programs",
+      "url": "https://ocw.mit.edu/courses/6-001-structure-and-interpretation-of-computer-programs-spring-2005/",
+      "info": "6.001 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Lego Robotics",
+      "url": "https://ocw.mit.edu/courses/es-293-lego-robotics-spring-2007/",
+      "info": "ES.293 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Quantum Information Science",
+      "url": "https://ocw.mit.edu/courses/mas-865j-quantum-information-science-spring-2006/",
+      "info": "MAS.865J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computer Algorithms in Systems Engineering",
+      "url": "https://ocw.mit.edu/courses/1-204-computer-algorithms-in-systems-engineering-spring-2010/",
+      "info": "1.204 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Algorithms for Inference",
+      "url": "https://ocw.mit.edu/courses/6-438-algorithms-for-inference-fall-2014/",
+      "info": "6.438 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computability Theory of and with Scheme",
+      "url": "https://ocw.mit.edu/courses/6-844-computability-theory-of-and-with-scheme-spring-2003/",
+      "info": "6.844 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Microelectronic Devices and Circuits",
+      "url": "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/",
+      "info": "6.012 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Fundamentals of Program Analysis",
+      "url": "https://ocw.mit.edu/courses/6-820-fundamentals-of-program-analysis-fall-2015/",
+      "info": "6.820 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Microelectronic Devices and Circuits",
+      "url": "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-spring-2009/",
+      "info": "6.012 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Bioinformatics and Proteomics",
+      "url": "https://ocw.mit.edu/courses/6-092-bioinformatics-and-proteomics-january-iap-2005/",
+      "info": "6.092 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Robocraft Programming Competition",
+      "url": "https://ocw.mit.edu/courses/6-370-robocraft-programming-competition-january-iap-2005/",
+      "info": "6.370 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Numerical Analysis",
+      "url": "https://ocw.mit.edu/courses/18-330-introduction-to-numerical-analysis-spring-2004/",
+      "info": "18.330 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Special Topics: Designing Sociable Media",
+      "url": "https://ocw.mit.edu/courses/mas-961-special-topics-designing-sociable-media-spring-2008/",
+      "info": "MAS.961 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Quantum Computation",
+      "url": "https://ocw.mit.edu/courses/18-435j-quantum-computation-fall-2003/",
+      "info": "18.435J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Social Visualization",
+      "url": "https://ocw.mit.edu/courses/mas-965-social-visualization-fall-2004/",
+      "info": "MAS.965 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Special Topics in Media Technology: Cooperative Machines",
+      "url": "https://ocw.mit.edu/courses/mas-965-special-topics-in-media-technology-cooperative-machines-fall-2003/",
+      "info": "MAS.965 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Medical Decision Support",
+      "url": "https://ocw.mit.edu/courses/hst-951j-medical-decision-support-spring-2003/",
+      "info": "HST.951J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computer Language Engineering (SMA 5502)",
+      "url": "https://ocw.mit.edu/courses/6-035-computer-language-engineering-sma-5502-fall-2005/",
+      "info": "6.035 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Numerical Methods Applied to Chemical Engineering",
+      "url": "https://ocw.mit.edu/courses/10-34-numerical-methods-applied-to-chemical-engineering-fall-2005/",
+      "info": "10.34 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Design and Analysis of Algorithms",
+      "url": "https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2012/",
+      "info": "6.046J | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Common Sense Reasoning for Interactive Applications",
+      "url": "https://ocw.mit.edu/courses/mas-962-common-sense-reasoning-for-interactive-applications-fall-2006/",
+      "info": "MAS.962 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Spatial Analysis",
+      "url": "https://ocw.mit.edu/courses/11-205-introduction-to-spatial-analysis-fall-2019/",
+      "info": "11.205 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Quantum Information Science II",
+      "url": "https://ocw.mit.edu/courses/8-371x-quantum-information-science-ii-spring-2018/",
+      "info": "8.371x | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Quantum Information Science I",
+      "url": "https://ocw.mit.edu/courses/8-370x-quantum-information-science-i-spring-2018/",
+      "info": "8.370x | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to Computational Thinking",
+      "url": "https://ocw.mit.edu/courses/18-s191-introduction-to-computational-thinking-fall-2020/",
+      "info": "18.S191 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Collaborative Data Science for Healthcare",
+      "url": "https://ocw.mit.edu/courses/hst-953-collaborative-data-science-for-healthcare-fall-2020/",
+      "info": "HST.953 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Underactuated Robotics",
+      "url": "https://ocw.mit.edu/courses/6-832-underactuated-robotics-spring-2022/",
+      "info": "6.832 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Generative Artificial Intelligence in K–12 Education",
+      "url": "https://ocw.mit.edu/courses/6-s062-generative-artificial-intelligence-in-k12-education-fall-2023/",
+      "info": "6.S062 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Database Systems",
+      "url": "https://ocw.mit.edu/courses/6-5830-database-systems-fall-2023/",
+      "info": "6.5830 | Graduate, Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Numerical Methods for Partial Differential Equations",
+      "url": "https://ocw.mit.edu/courses/18-336-numerical-methods-for-partial-differential-equations-spring-2009/",
+      "info": "18.336 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "The Society of Mind",
+      "url": "https://ocw.mit.edu/courses/6-868j-the-society-of-mind-fall-2011/",
+      "info": "6.868J | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Robotic Manipulation",
+      "url": "https://ocw.mit.edu/courses/6-4210-robotic-manipulation-fall-2022/",
+      "info": "6.4210 | Undergraduate, Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Multicore Programming Primer",
+      "url": "https://ocw.mit.edu/courses/6-189-multicore-programming-primer-january-iap-2007/",
+      "info": "6.189 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Underactuated Robotics",
+      "url": "https://ocw.mit.edu/courses/6-832-underactuated-robotics-spring-2009/",
+      "info": "6.832 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Brains, Minds and Machines Summer Course",
+      "url": "https://ocw.mit.edu/courses/res-9-003-brains-minds-and-machines-summer-course-summer-2015/",
+      "info": "RES.9-003 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Learn Differential Equations: Up Close with Gilbert Strang and Cleve Moler",
+      "url": "https://ocw.mit.edu/courses/res-18-009-learn-differential-equations-up-close-with-gilbert-strang-and-cleve-moler-fall-2015/",
+      "info": "RES.18-009 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "RAISE (Responsible AI for Social Empowerment and Education)",
+      "url": "https://ocw.mit.edu/courses/res-mas-001-raise-responsible-ai-for-social-empowerment-and-education-spring-2022/",
+      "info": "RES.MAS-001 | Non-Credit",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Computer Systems Security",
+      "url": "https://ocw.mit.edu/courses/6-5660-computer-systems-security-spring-2024/",
+      "info": "6.5660 | Undergraduate, Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Girls Who Build: Make Your Own Wearables Workshop",
+      "url": "https://ocw.mit.edu/courses/res-2-005-girls-who-build-make-your-own-wearables-workshop-spring-2015/",
+      "info": "RES.2-005 | High School",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Introduction to R and Geographic Information Systems (GIS)",
+      "url": "https://ocw.mit.edu/courses/introduction-to-r-and-gis-fall-2023/",
+      "info": "RES.1-002 | Non-Credit",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Mathematics of Big Data and Machine Learning",
+      "url": "https://ocw.mit.edu/courses/res-ll-005-mathematics-of-big-data-and-machine-learning-january-iap-2020/",
+      "info": "RES.LL-005 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "How to AI (Almost) Anything",
+      "url": "https://ocw.mit.edu/courses/mas-s60-how-to-ai-almost-anything-spring-2025/",
+      "info": "MAS.S60 | Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Foundations of Information Policy",
+      "url": "https://ocw.mit.edu/courses/6-4590-foundations-of-information-policy-fall-2024/",
+      "info": "6.4590 | Undergraduate, Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Elliptic Curves",
+      "url": "https://ocw.mit.edu/courses/18-783-elliptic-curves-spring-2021/",
+      "info": "18.783 | Undergraduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Social and Ethical Responsibilities of Computing (SERC)",
+      "url": "https://ocw.mit.edu/courses/res-tll-008-social-and-ethical-responsibilities-of-computing-serc/",
+      "info": "RES.TLL-008 | Non-Credit",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    },
+    {
+      "title": "Theory of Computation",
+      "url": "https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/",
+      "info": "18.404J | Undergraduate, Graduate",
+      "subject": "Computer Science",
+      "subject_url": "https://ocw.mit.edu/search/?t=Computer%20Science"
+    }
+  ]
+}

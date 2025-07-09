@@ -21,6 +21,7 @@ MITCrawlerX is a powerful web scraper for downloading MIT OpenCourseWare (OCW) c
 - **Single Course Mode**: Downloads materials from a specific course URL
 - **Multi Course Mode**: Discovers and downloads multiple courses from subject URLs or search queries
 - **Distributed Mode**: Enables coordination across multiple devices/nodes
+- **Incremental Mode**: Only crawls new courses not found in previous runs
 
 ### Data Flow
 
@@ -35,6 +36,21 @@ MITCrawlerX is a powerful web scraper for downloading MIT OpenCourseWare (OCW) c
 ### Installation
 ```bash
 pip install -r requirements.txt
+```
+
+### Testing
+```bash
+# Test incremental crawling functionality
+python test_incremental.py
+
+# Test course limit fixes
+python test_course_limit.py
+
+# Test Chrome fallback behavior
+python test_no_chrome.py
+
+# Verify specific course counts
+python verify_non_credit.py
 ```
 
 ### Single Course Scraping
@@ -66,6 +82,15 @@ python main.py --multi --distributed --node-id 2 --total-nodes 3 --subject-categ
 ### Force Refresh (Clear All Data)
 ```bash
 python main.py --multi --force-refresh --subject-category cs
+```
+
+### Incremental Crawling
+```bash
+# Initial crawl
+python main.py --multi --subject-urls "https://ocw.mit.edu/search/?l=Non-Credit" --max-courses-per-subject 10
+
+# Incremental crawl (only new courses)
+python main.py --multi --subject-urls "https://ocw.mit.edu/search/?l=Non-Credit" --max-courses-per-subject 20 --incremental
 ```
 
 ## Configuration
@@ -108,6 +133,13 @@ The system extracts text content from:
 - Each scraping session generates a unique task ID based on input URLs
 - Progress files allow resuming interrupted sessions
 - Distributed database prevents duplicate processing across nodes
+- Incremental mode filters out previously discovered courses
+
+### Task ID System
+The system generates unique task IDs (8-character MD5 hash) based on the input URLs to:
+- Distinguish between different scraping sessions
+- Enable proper progress tracking and resumption
+- Support incremental crawling by comparing against previous runs
 
 ### Error Handling
 - Comprehensive logging to `logs/` directory
@@ -119,3 +151,15 @@ Built-in delays prevent overwhelming MIT's servers:
 - 20 seconds between courses
 - 10 seconds between search result pages  
 - 1-3 seconds between individual requests
+
+### Chrome WebDriver Fallback
+The system automatically falls back to requests-based scraping when Chrome WebDriver is unavailable:
+- Selenium WebDriver is preferred for JavaScript-heavy pages
+- Requests + BeautifulSoup fallback for environments without Chrome
+- Automatic detection and graceful degradation
+
+### Course Discovery Architecture
+- **Infinite Scroll Handling**: Automatically scrolls through paginated results
+- **Deduplication**: Prevents duplicate course entries during discovery
+- **Incremental Discovery**: Compares against previous runs to identify new courses
+- **Subject-based Organization**: Organizes courses by academic subject/department

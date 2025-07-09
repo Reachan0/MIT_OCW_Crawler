@@ -1,0 +1,12 @@
+{
+  "timestamp": "2025-07-09 15:57:28",
+  "task_id": "89f630f2",
+  "urls": [
+    "https://ocw.mit.edu/search/?t=Computer%20Science"
+  ],
+  "stage": "discovery",
+  "detail": "发现阶段完成，共发现 288 个课程",
+  "total_courses_found": 288,
+  "total_courses_processed": 0,
+  "total_courses_failed": 0
+}

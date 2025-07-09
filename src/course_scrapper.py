@@ -28,10 +28,11 @@ from src.utils.distributed import DistributedScraper
 class CourseScraper:
     """Scraper that discovers and processes multiple courses."""
     
-    def __init__(self, subject_urls=DEFAULT_SUBJECT_URLS, download_dir=DEFAULT_DOWNLOAD_DIR, query_url=DEFAULT_QUERY_URL, max_courses_per_subject=None):
+    def __init__(self, subject_urls=DEFAULT_SUBJECT_URLS, download_dir=DEFAULT_DOWNLOAD_DIR, query_url=DEFAULT_QUERY_URL, max_courses_per_subject=None, incremental=False):
         self.query_url = query_url
         self.max_courses_per_subject = max_courses_per_subject # Limit courses discovered per subject/query
         self.download_dir = download_dir
+        self.incremental = incremental  # Enable incremental crawling
         self.logger = Logger("CourseScraperScraper", see_time=True, console_log=True)
         self._ensure_dir_exists(download_dir)
         
@@ -378,14 +379,53 @@ class CourseScraper:
                     saved_urls = data.get('urls', [])
                     
                     if saved_task_id == self.task_id and set(saved_urls) == set(self._urls_to_scrape):
-                        self.courses_found = data.get('courses', [])
-                        self.logger.log_message(f"加载已发现的课程: {len(self.courses_found)} 个")
+                        if self.incremental:
+                            # 在增量模式下，保存已有课程作为参考，但不直接使用
+                            self.existing_courses = data.get('courses', [])
+                            self.courses_found = []  # 重新开始发现
+                            self.logger.log_message(f"增量模式：加载已有课程 {len(self.existing_courses)} 个作为参考")
+                        else:
+                            # 常规模式：直接使用已有课程
+                            self.courses_found = data.get('courses', [])
+                            self.existing_courses = []
+                            self.logger.log_message(f"加载已发现的课程: {len(self.courses_found)} 个")
                     else:
                         self.logger.log_message(f"URL集合已更改，将重新爬取课程列表")
                         self.courses_found = []
+                        self.existing_courses = []
             except Exception as e:
                 self.logger.log_message(f"加载已发现的课程失败: {e}", level=logging.ERROR)
                 self.courses_found = []
+                self.existing_courses = []
+        else:
+            self.existing_courses = []
+    
+    def _filter_new_courses(self, all_courses):
+        """过滤出新课程（在增量模式下使用）"""
+        if not self.incremental or not self.existing_courses:
+            return all_courses
+            
+        # 创建已有课程URL的集合，用于快速查找
+        existing_urls = {course['url'] for course in self.existing_courses}
+        
+        # 过滤出新课程
+        new_courses = [course for course in all_courses if course['url'] not in existing_urls]
+        
+        self.logger.log_message(f"增量模式：总共发现 {len(all_courses)} 个课程，其中新课程 {len(new_courses)} 个")
+        
+        return new_courses
+    
+    def _merge_courses_with_existing(self, new_courses):
+        """将新课程与已有课程合并保存"""
+        if not self.incremental or not self.existing_courses:
+            return new_courses
+            
+        # 合并已有课程和新课程
+        merged_courses = self.existing_courses + new_courses
+        
+        self.logger.log_message(f"增量模式：合并后总共 {len(merged_courses)} 个课程")
+        
+        return merged_courses
     
     def _update_progress(self, stage, detail=None):
         """更新并保存进度信息"""
@@ -509,7 +549,7 @@ class CourseScraper:
 
                     # Handle infinite scroll pagination
                     scroll_attempt = 1
-                    max_scroll_attempts = 100  # Prevent infinite loops
+                    max_scroll_attempts = 1000  # Increased limit to handle large course catalogs
                     courses_before_scroll = courses_found_this_subject
                     
                     while scroll_attempt <= max_scroll_attempts:
@@ -577,8 +617,30 @@ class CourseScraper:
         
         # Log final results
         self.logger.log_message(f"Total courses discovered across all URLs: {len(self.courses_found)}")
-        self._update_progress("discovery", f"发现阶段完成，共发现 {len(self.courses_found)} 个课程")
-        return self.courses_found
+        
+        # Handle incremental mode
+        if self.incremental:
+            # Filter out existing courses, keeping only new ones
+            new_courses = self._filter_new_courses(self.courses_found)
+            
+            # Merge new courses with existing ones for saving
+            merged_courses = self._merge_courses_with_existing(new_courses)
+            
+            # Update courses_found with all courses (existing + new) for saving
+            # But return only new courses for processing
+            all_courses_for_saving = self.courses_found  # Keep discovered courses for comparison
+            self.courses_found = merged_courses  # Update for saving
+            
+            # Save the merged courses
+            self._save_found_courses()
+            
+            # Return only new courses for processing
+            self._update_progress("discovery", f"发现阶段完成，共发现 {len(all_courses_for_saving)} 个课程，其中新课程 {len(new_courses)} 个")
+            return new_courses
+        else:
+            # Normal mode - return all discovered courses
+            self._update_progress("discovery", f"发现阶段完成，共发现 {len(self.courses_found)} 个课程")
+            return self.courses_found
     
     def process_courses(self, max_total_courses=None):
         """Processes the discovered courses using ContentScraper, up to max_total_courses."""

@@ -1,0 +1,12 @@
+{
+  "timestamp": "2025-07-09 15:55:31",
+  "task_id": "2b435877",
+  "urls": [
+    "https://ocw.mit.edu/search/?d=Electrical%20Engineering%20and%20Computer%20Science"
+  ],
+  "stage": "discovery",
+  "detail": "发现阶段完成，共发现 277 个课程",
+  "total_courses_found": 277,
+  "total_courses_processed": 0,
+  "total_courses_failed": 0
+}

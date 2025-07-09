@@ -1,0 +1,461 @@
+{
+  "timestamp": "2025-07-09 15:02:24",
+  "task_id": "b233e473",
+  "subject_urls": [
+    "https://ocw.mit.edu/search/?l=Non-Credit"
+  ],
+  "total_courses_found": 64,
+  "total_courses_processed": 64,
+  "total_courses_failed": 0,
+  "courses_processed": [
+    {
+      "title": "Competency-Based Education: The Why, What, and How",
+      "url": "https://ocw.mit.edu/courses/res-cms-502-competency-based-education-the-why-what-and-how-spring-2020/",
+      "info": "RES.CMS-502 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Competency-Based_Education_The_Why,_What,_and_How.json"
+    },
+    {
+      "title": "Collaborative Design and Creative Expression with Arduino Microcontrollers",
+      "url": "https://ocw.mit.edu/courses/res-3-002-collaborative-design-and-creative-expression-with-arduino-microcontrollers-january-iap-2017/",
+      "info": "RES.3-002 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Collaborative_Design_and_Creative_Expression_with_Arduino_Microcontrollers.json"
+    },
+    {
+      "title": "CITE Reports",
+      "url": "https://ocw.mit.edu/courses/res-11-001-cite-reports-fall-2015/",
+      "info": "RES.11-001 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/CITE_Reports.json"
+    },
+    {
+      "title": "Day of AI",
+      "url": "https://ocw.mit.edu/courses/res-mas-002-day-of-ai-spring-2022/",
+      "info": "RES.MAS-002 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Day_of_AI.json"
+    },
+    {
+      "title": "Brave New Planet",
+      "url": "https://ocw.mit.edu/courses/res-7-003-brave-new-planet-fall-2020/",
+      "info": "RES.7-003 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Brave_New_Planet.json"
+    },
+    {
+      "title": "Design Thinking for Leading and Learning",
+      "url": "https://ocw.mit.edu/courses/res-cms-155-design-thinking-for-leading-and-learning-spring-2019/",
+      "info": "RES.CMS-155 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Design_Thinking_for_Leading_and_Learning.json"
+    },
+    {
+      "title": "Телемосты (Telebridges) Russian Conversation Exchange Site",
+      "url": "https://ocw.mit.edu/courses/res-21g-601-telebridges-russian-conversation-exchange-site-fall-2021/",
+      "info": "RES.21G-601 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Телемосты_(Telebridges)_Russian_Conversation_Exchange_Site.json"
+    },
+    {
+      "title": "Teaching Marguerite de Navarre's Heptaméron",
+      "url": "https://ocw.mit.edu/courses/res-21g-3002-teaching-marguerite-de-navarres-heptameron-fall-2023/",
+      "info": "RES.21G-3002 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Teaching_Marguerite_de_Navarre's_Heptaméron.json"
+    },
+    {
+      "title": "Nancy's Brain Talks",
+      "url": "https://ocw.mit.edu/courses/res-9-004-nancys-brain-talks-fall-2022/",
+      "info": "RES.9-004 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Nancy's_Brain_Talks.json"
+    },
+    {
+      "title": "Biology Teaching Assistant (TA) Training",
+      "url": "https://ocw.mit.edu/courses/res-7-005-biology-teaching-assistant-ta-training-fall-2021/",
+      "info": "RES.7-005 | Undergraduate, Graduate, Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Biology_Teaching_Assistant_(TA)_Training.json"
+    },
+    {
+      "title": "Leveraging Urban Mobility Disruptions to Create Better Cities",
+      "url": "https://ocw.mit.edu/courses/res-11-550-leveraging-urban-mobility-disruptions-to-create-better-cities-spring-2021/",
+      "info": "RES.11-550 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Leveraging_Urban_Mobility_Disruptions_to_Create_Better_Cities.json"
+    },
+    {
+      "title": "Energy Needs Assessment Toolkit",
+      "url": "https://ocw.mit.edu/courses/res-ec-004-energy-needs-assessment-toolkit/",
+      "info": "RES.EC-004 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Energy_Needs_Assessment_Toolkit.json"
+    },
+    {
+      "title": "Becoming a More Equitable Educator: Mindsets and Practices",
+      "url": "https://ocw.mit.edu/courses/res-cms-503-becoming-a-more-equitable-educator-mindsets-and-practices-spring-2020/",
+      "info": "RES.CMS-503 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Becoming_a_More_Equitable_Educator_Mindsets_and_Practices.json"
+    },
+    {
+      "title": "Media Literacy in the Age of Deepfakes",
+      "url": "https://ocw.mit.edu/courses/res-cms-001-media-literacy-in-the-age-of-deepfakes-spring-2021/",
+      "info": "RES.CMS-001 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Media_Literacy_in_the_Age_of_Deepfakes.json"
+    },
+    {
+      "title": "MEG Workshop",
+      "url": "https://ocw.mit.edu/courses/res-9-007-meg-workshop-spring-2019/",
+      "info": "RES.9-007 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/MEG_Workshop.json"
+    },
+    {
+      "title": "Climate Action Hands-On: Harnessing Science with Communities to Cut Carbon",
+      "url": "https://ocw.mit.edu/courses/res-env-001-climate-action-hands-on-harnessing-science-with-communities-to-cut-carbon-january-iap-2017/",
+      "info": "RES.ENV-001 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Climate_Action_Hands-On_Harnessing_Science_with_Communities_to_Cut_Carbon.json"
+    },
+    {
+      "title": "MIT Sloan Teaching Resources Library",
+      "url": "https://ocw.mit.edu/courses/res-15-001-mit-sloan-learningedge-fall-2008/",
+      "info": "RES.15-001 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/MIT_Sloan_Teaching_Resources_Library.json"
+    },
+    {
+      "title": "Algebra I Student Notes",
+      "url": "https://ocw.mit.edu/courses/res-18-011-algebra-i-student-notes-fall-2021/",
+      "info": "RES.18-011 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Algebra_I_Student_Notes.json"
+    },
+    {
+      "title": "D-Lab Student Showcases",
+      "url": "https://ocw.mit.edu/courses/res-ec-003-d-lab-student-showcases-spring-2022/",
+      "info": "RES.EC-003 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/D-Lab_Student_Showcases.json"
+    },
+    {
+      "title": "The Roosevelt Project",
+      "url": "https://ocw.mit.edu/courses/res-14-003-the-roosevelt-project-spring-2023/",
+      "info": "RES.14-003 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/The_Roosevelt_Project.json"
+    },
+    {
+      "title": "MIT Project on Embodied Education",
+      "url": "https://ocw.mit.edu/courses/res-sts-001-mit-project-on-embodied-education-fall-2024/",
+      "info": "RES.STS-001 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/MIT_Project_on_Embodied_Education.json"
+    },
+    {
+      "title": "Teaching La Princesse de Clèves",
+      "url": "https://ocw.mit.edu/courses/res-21g-3001-teaching-la-princesse-de-cleves-fall-2023/",
+      "info": "RES.21G-3001 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Teaching_La_Princesse_de_Clèves.json"
+    },
+    {
+      "title": "BioNook Online Biology Resources",
+      "url": "https://ocw.mit.edu/courses/res-7-004-bionook-online-biology-resources-spring-2021/",
+      "info": "RES.7-004 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/BioNook_Online_Biology_Resources.json"
+    },
+    {
+      "title": "Case Studies in Social and Ethical Responsibilities of Computing",
+      "url": "https://ocw.mit.edu/courses/res-tll-007-case-studies-in-social-and-ethical-responsibilities-of-computing-fall-2021/",
+      "info": "RES.TLL-007 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Case_Studies_in_Social_and_Ethical_Responsibilities_of_Computing.json"
+    },
+    {
+      "title": "Sorting Truth From Fiction: Civic Online Reasoning",
+      "url": "https://ocw.mit.edu/courses/res-cms-504-sorting-truth-from-fiction-civic-online-reasoning-spring-2021/",
+      "info": "RES.CMS-504 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Sorting_Truth_From_Fiction_Civic_Online_Reasoning.json"
+    },
+    {
+      "title": "How to Process, Analyze and Visualize Data",
+      "url": "https://ocw.mit.edu/courses/res-6-009-how-to-process-analyze-and-visualize-data-january-iap-2012/",
+      "info": "RES.6-009 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/How_to_Process,_Analyze_and_Visualize_Data.json"
+    },
+    {
+      "title": "MIT Climate Portal",
+      "url": "https://ocw.mit.edu/courses/res-env-004-mit-climate-portal-fall-2020/",
+      "info": "RES.ENV-004 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/MIT_Climate_Portal.json"
+    },
+    {
+      "title": "Topics in Fourier Analysis",
+      "url": "https://ocw.mit.edu/courses/res-18-015-topics-in-fourier-analysis-spring-2024/",
+      "info": "RES.18-015 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Topics_in_Fourier_Analysis.json"
+    },
+    {
+      "title": "7.06x Cell Biology",
+      "url": "https://ocw.mit.edu/courses/res-7-007-7-06x-cell-biology/",
+      "info": "RES.7-007 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/7.06x_Cell_Biology.json"
+    },
+    {
+      "title": "Ethics of AI Bias",
+      "url": "https://ocw.mit.edu/courses/res-10-002-ethics-of-ai-bias-spring-2023/",
+      "info": "RES.10-002 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Ethics_of_AI_Bias.json"
+    },
+    {
+      "title": "Envisioning the Graduate of the Future",
+      "url": "https://ocw.mit.edu/courses/res-cms-501-envisioning-the-graduate-of-the-future-spring-2020/",
+      "info": "RES.CMS-501 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Envisioning_the_Graduate_of_the_Future.json"
+    },
+    {
+      "title": "Brain and Cognitive Sciences Computational Tutorial Series",
+      "url": "https://ocw.mit.edu/courses/res-9-008-brain-and-cognitive-sciences-computational-tutorials/",
+      "info": "RES.9-008 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Brain_and_Cognitive_Sciences_Computational_Tutorial_Series.json"
+    },
+    {
+      "title": "Marguerite de Navarre Society Website",
+      "url": "https://ocw.mit.edu/courses/res-21g-3004-marguerite-de-navarre-society-website-fall-2023/",
+      "info": "RES.21G-3004 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Marguerite_de_Navarre_Society_Website.json"
+    },
+    {
+      "title": "MIT Little Devices Lab",
+      "url": "https://ocw.mit.edu/courses/res-hst-001-mit-little-devices-lab-fall-2021/",
+      "info": "RES.HST-001 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/MIT_Little_Devices_Lab.json"
+    },
+    {
+      "title": "Pre-7.01: Getting up to Speed in Biology",
+      "url": "https://ocw.mit.edu/courses/res-7-001-pre-7-01-getting-up-to-speed-in-biology-summer-2019/",
+      "info": "RES.7-001 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Pre-7.01_Getting_up_to_Speed_in_Biology.json"
+    },
+    {
+      "title": "How to Speak",
+      "url": "https://ocw.mit.edu/courses/res-tll-005-how-to-speak-january-iap-2018/",
+      "info": "RES.TLL-005 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/How_to_Speak.json"
+    },
+    {
+      "title": "MIT-Haiti Initiative / Inisyativ MIT-Ayiti",
+      "url": "https://ocw.mit.edu/courses/res-24-002-mit-haiti-initiative-inisyativ-mit-ayiti-spring-2023/",
+      "info": "RES.24-002 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/MIT-Haiti_Initiative_Inisyativ_MIT-Ayiti.json"
+    },
+    {
+      "title": "Launching Innovation in Schools",
+      "url": "https://ocw.mit.edu/courses/res-cms-154-launching-innovation-in-schools-spring-2019/",
+      "info": "RES.CMS-154 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Launching_Innovation_in_Schools.json"
+    },
+    {
+      "title": "STAR: Software Tools for Academics and Researchers",
+      "url": "https://ocw.mit.edu/courses/res-tl-002-star-software-tools-for-academics-and-researchers-spring-2012/",
+      "info": "RES.TLL-002 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/STAR_Software_Tools_for_Academics_and_Researchers.json"
+    },
+    {
+      "title": "Climate Science, Risk & Solutions: A Climate Primer",
+      "url": "https://ocw.mit.edu/courses/res-env-005-climate-science-risk-solutions-a-climate-primer/",
+      "info": "RES.ENV-005 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Climate_Science,_Risk_&_Solutions_A_Climate_Primer.json"
+    },
+    {
+      "title": "AFNI Training Bootcamp",
+      "url": "https://ocw.mit.edu/courses/res-9-006-afni-training-bootcamp-spring-2018/",
+      "info": "RES.9-006 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/AFNI_Training_Bootcamp.json"
+    },
+    {
+      "title": "Exploring Fairness in Machine Learning for International Development",
+      "url": "https://ocw.mit.edu/courses/res-ec-001-exploring-fairness-in-machine-learning-for-international-development-spring-2020/",
+      "info": "RES.EC-001 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Exploring_Fairness_in_Machine_Learning_for_International_Development.json"
+    },
+    {
+      "title": "Facilitative Leadership in the Public Sector",
+      "url": "https://ocw.mit.edu/courses/res-11-004-facilitative-leadership-in-the-public-sector-fall-2024/",
+      "info": "RES.11-004 | Graduate, Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Facilitative_Leadership_in_the_Public_Sector.json"
+    },
+    {
+      "title": "How to CAD Almost Anything",
+      "url": "https://ocw.mit.edu/courses/res-16-002-how-to-cad-almost-anything-january-iap-2024/",
+      "info": "RES.16-002 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/How_to_CAD_Almost_Anything.json"
+    },
+    {
+      "title": "Teaching with Sustainability",
+      "url": "https://ocw.mit.edu/courses/res-env-006-teaching-with-sustainability-january-iap-2022/",
+      "info": "RES.ENV-006 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Teaching_with_Sustainability.json"
+    },
+    {
+      "title": "7.03x Genetics",
+      "url": "https://ocw.mit.edu/courses/res-7-006-7-03x-genetics/",
+      "info": "RES.7-006 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/7.03x_Genetics.json"
+    },
+    {
+      "title": "Introduction to Computational Neuroscience with Neuroblox",
+      "url": "https://ocw.mit.edu/courses/res-9-009-introduction-to-computational-neuroscience-with-neuroblox-january-iap-2025/",
+      "info": "RES.9-009 | Graduate, Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Introduction_to_Computational_Neuroscience_with_Neuroblox.json"
+    },
+    {
+      "title": "MIT Governance Lab",
+      "url": "https://ocw.mit.edu/courses/res-17-002-mit-governance-lab-spring-2023/",
+      "info": "RES.17-002 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/MIT_Governance_Lab.json"
+    },
+    {
+      "title": "Climate Justice Instructional Toolkit",
+      "url": "https://ocw.mit.edu/courses/res-11-003-climate-justice-instructional-toolkit-fall-2023/",
+      "info": "RES.11-003 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Climate_Justice_Instructional_Toolkit.json"
+    },
+    {
+      "title": "Business and Impact Planning for Social Enterprises (0.SolveX)",
+      "url": "https://ocw.mit.edu/courses/res-solvex-business-and-impact-planning-for-social-enterprises-0-solvex-summer-2021/",
+      "info": "RES.SolveX | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Business_and_Impact_Planning_for_Social_Enterprises_(0.SolveX).json"
+    },
+    {
+      "title": "RAISE (Responsible AI for Social Empowerment and Education)",
+      "url": "https://ocw.mit.edu/courses/res-mas-001-raise-responsible-ai-for-social-empowerment-and-education-spring-2022/",
+      "info": "RES.MAS-001 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/RAISE_(Responsible_AI_for_Social_Empowerment_and_Education).json"
+    },
+    {
+      "title": "Marguerite de Roberval: A Web-Based Approach to Teaching a Renaissance Heroine",
+      "url": "https://ocw.mit.edu/courses/res-21g-3003-marguerite-de-roberval-a-web-based-approach-to-teaching-a-renaissance-heroine-fall-2023/",
+      "info": "RES.21G-3003 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Marguerite_de_Roberval_A_Web-Based_Approach_to_Teaching_a_Renaissance_Heroine.json"
+    },
+    {
+      "title": "Angles",
+      "url": "https://ocw.mit.edu/courses/res-21w-01-angles-fall-2015/",
+      "info": "RES.21W-01 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Angles.json"
+    },
+    {
+      "title": "Introduction to R and Geographic Information Systems (GIS)",
+      "url": "https://ocw.mit.edu/courses/introduction-to-r-and-gis-fall-2023/",
+      "info": "RES.1-002 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Introduction_to_R_and_Geographic_Information_Systems_(GIS).json"
+    },
+    {
+      "title": "MIT Election Data + Science Lab",
+      "url": "https://ocw.mit.edu/courses/res-17-001-mit-election-data-science-lab-fall-2020/",
+      "info": "RES.17-001 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/MIT_Election_Data_+_Science_Lab.json"
+    },
+    {
+      "title": "Data Management",
+      "url": "https://ocw.mit.edu/courses/res-str-002-data-management-spring-2016/",
+      "info": "RES.STR-002 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Data_Management.json"
+    },
+    {
+      "title": "LL EduCATE: Introduction to Engineering Concepts",
+      "url": "https://ocw.mit.edu/courses/res.ll-004-ll-educate-introduction-to-engineering-concepts-spring-2022/",
+      "info": "RES.LL-004 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/LL_EduCATE_Introduction_to_Engineering_Concepts.json"
+    },
+    {
+      "title": "Nuclear Weapons Education Project",
+      "url": "https://ocw.mit.edu/courses/res-8-008-nuclear-weapons-education-project-spring-2022/",
+      "info": "RES.8-008 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Nuclear_Weapons_Education_Project.json"
+    },
+    {
+      "title": "7.InT: Inclusive Teaching Module",
+      "url": "https://ocw.mit.edu/courses/res-7-009-7-int-inclusive-teaching-module-fall-2022/",
+      "info": "RES.7-009 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/7.InT_Inclusive_Teaching_Module.json"
+    },
+    {
+      "title": "Syllabus Checklist to Support Student Belonging & Achievement",
+      "url": "https://ocw.mit.edu/courses/res-tll-010-syllabus-checklist-to-support-student-belonging-achievement-spring-2025/",
+      "info": "RES.TLL-010 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Syllabus_Checklist_to_Support_Student_Belonging_&_Achievement.json"
+    },
+    {
+      "title": "Heavy Metal 101",
+      "url": "https://ocw.mit.edu/courses/res-21m-001-heavy-metal-101-january-iap-2025/",
+      "info": "RES.21M-001 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Heavy_Metal_101.json"
+    },
+    {
+      "title": "Social and Ethical Responsibilities of Computing (SERC)",
+      "url": "https://ocw.mit.edu/courses/res-tll-008-social-and-ethical-responsibilities-of-computing-serc/",
+      "info": "RES.TLL-008 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Social_and_Ethical_Responsibilities_of_Computing_(SERC).json"
+    },
+    {
+      "title": "Geographic Information System (GIS) Tutorial",
+      "url": "https://ocw.mit.edu/courses/res-str-001-geographic-information-system-gis-tutorial-january-iap-2022/",
+      "info": "RES.STR-001 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/Geographic_Information_System_(GIS)_Tutorial.json"
+    },
+    {
+      "title": "EarthDNA's Climate 101",
+      "url": "https://ocw.mit.edu/courses/res-env-003-earthdnas-climate-101-fall-2019/",
+      "info": "RES.ENV-003 | Non-Credit",
+      "subject": "General",
+      "output_path": "noncredit_courses/General/EarthDNA's_Climate_101.json"
+    }
+  ],
+  "courses_failed": []
+}
