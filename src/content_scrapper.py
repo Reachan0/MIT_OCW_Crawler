@@ -276,69 +276,126 @@ class ContentScraper:
 
     def scrape_syllabus_content(self):
         """Scrapes content from the syllabus page."""
-        self.logger.log_message(f"Scraping syllabus content from: {self.syllabus_url}")
         syllabus_data = {
             "content": "",
             "files": []
         }
 
+        # First, check if there's a syllabus link in the main course page
         try:
-            response = self.session.get(self.syllabus_url, headers=HEADERS, timeout=30)
-            # Check if page exists
-            if response.status_code == 404:
-                self.logger.log_message(f"Syllabus page not found at {self.syllabus_url}", level=logging.WARNING)
-                return syllabus_data
-                
+            self.logger.log_message(f"Checking for syllabus links in main course page: {self.course_url}")
+            response = self.session.get(self.course_url, headers=HEADERS, timeout=30)
             response.raise_for_status()
             soup = BeautifulSoup(response.content, "html.parser")
             
-            # Extract main syllabus content
-            main_content = soup.find("main")
-            if main_content:
-                # Remove navigation elements
-                for nav in main_content.find_all(["nav", "footer"]):
-                    if hasattr(nav, 'decompose'):
-                        nav.decompose()
-                
-                syllabus_data["content"] = self._clean_text(main_content.get_text(separator="\n"))
+            # Look for syllabus link
+            syllabus_link = soup.find("a", href=re.compile(r"pages/syllabus", re.IGNORECASE))
             
-            # Look for downloadable files in the syllabus page
-            resource_items = soup.find_all("div", class_="resource-item")
-            for item in resource_items:
-                link = item.find("a", href=True)
-                if not link:
-                    continue
+            if syllabus_link:
+                # Found syllabus link, construct full URL
+                syllabus_href = syllabus_link.get('href')
+                syllabus_url = urljoin(BASE_URL, syllabus_href)
+                self.logger.log_message(f"Found syllabus link: {syllabus_url}")
+                
+                # Try to fetch the syllabus page
+                try:
+                    self.logger.log_message(f"Scraping syllabus content from: {syllabus_url}")
+                    syllabus_response = self.session.get(syllabus_url, headers=HEADERS, timeout=30)
+                    syllabus_response.raise_for_status()
+                    syllabus_soup = BeautifulSoup(syllabus_response.content, "html.parser")
                     
-                file_href = link['href']
-                title_element = item.find(class_="resource-list-title")
-                title = title_element.text.strip() if title_element else "Untitled Resource"
-                
-                # Determine file type
-                file_type = "unknown"
-                if file_href.lower().endswith(".pdf"):
-                    file_type = "PDF"
-                elif file_href.lower().endswith(".docx"):
-                    file_type = "DOCX"
-                elif file_href.lower().endswith(".doc"):
-                    file_type = "DOC"
-                
-                source_url = urljoin(BASE_URL, file_href)
-                
-                syllabus_data["files"].append({
-                    "category": "Syllabus",
-                    "title": title,
-                    "type": file_type,
-                    "source_url": source_url
-                })
-                
-            self.logger.log_message(f"Found {len(syllabus_data['files'])} files in syllabus page.")
+                    # Extract main syllabus content
+                    main_content = syllabus_soup.find("main")
+                    if main_content:
+                        # Remove navigation elements
+                        for nav in main_content.find_all(["nav", "footer"]):
+                            if hasattr(nav, 'decompose'):
+                                nav.decompose()
+                        
+                        syllabus_data["content"] = self._clean_text(main_content.get_text(separator="\n"))
+                    
+                    # Look for downloadable files in the syllabus page
+                    resource_items = syllabus_soup.find_all("div", class_="resource-item")
+                    for item in resource_items:
+                        link = item.find("a", href=True)
+                        if not link:
+                            continue
+                            
+                        file_href = link['href']
+                        title_element = item.find(class_="resource-list-title")
+                        title = title_element.text.strip() if title_element else "Untitled Resource"
+                        
+                        # Determine file type
+                        file_type = "unknown"
+                        if file_href.lower().endswith(".pdf"):
+                            file_type = "PDF"
+                        elif file_href.lower().endswith(".docx"):
+                            file_type = "DOCX"
+                        elif file_href.lower().endswith(".doc"):
+                            file_type = "DOC"
+                        
+                        source_url = urljoin(BASE_URL, file_href)
+                        
+                        syllabus_data["files"].append({
+                            "category": "Syllabus",
+                            "title": title,
+                            "type": file_type,
+                            "source_url": source_url
+                        })
+                        
+                    self.logger.log_message(f"Found {len(syllabus_data['files'])} files in syllabus page.")
+                    return syllabus_data
+                    
+                except requests.exceptions.RequestException as e:
+                    self.logger.log_message(f"Failed to fetch syllabus page: {e}. Will try to extract from main page.", level=logging.WARNING)
+                except Exception as e:
+                    self.logger.log_message(f"Error parsing syllabus page: {e}. Will try to extract from main page.", level=logging.WARNING)
+            
+            # No syllabus link found or failed to fetch, try to extract syllabus content from main page
+            self.logger.log_message("No separate syllabus page found. Attempting to extract syllabus content from main course page.")
+            
+            # Look for syllabus-related sections in the main page
+            syllabus_sections = []
+            
+            # Try different patterns for syllabus content
+            patterns = [
+                soup.find("section", {"id": re.compile(r"syllabus", re.IGNORECASE)}),
+                soup.find("div", {"id": re.compile(r"syllabus", re.IGNORECASE)}),
+                soup.find("h2", string=re.compile(r"syllabus", re.IGNORECASE)),
+                soup.find("h3", string=re.compile(r"syllabus", re.IGNORECASE))
+            ]
+            
+            for pattern in patterns:
+                if pattern:
+                    if pattern.name in ["h2", "h3"]:
+                        # If it's a heading, get the next siblings until next heading
+                        current = pattern.next_sibling
+                        content_elements = []
+                        while current and current.name not in ["h1", "h2", "h3", "h4"]:
+                            if hasattr(current, 'get_text'):
+                                content_elements.append(current)
+                            current = current.next_sibling
+                        
+                        if content_elements:
+                            syllabus_text = "\n".join([elem.get_text() for elem in content_elements])
+                            syllabus_sections.append(syllabus_text)
+                    else:
+                        # If it's a section or div, get its content
+                        syllabus_sections.append(pattern.get_text())
+            
+            if syllabus_sections:
+                syllabus_data["content"] = self._clean_text("\n".join(syllabus_sections))
+                self.logger.log_message("Extracted syllabus content from main course page.")
+            else:
+                self.logger.log_message("No syllabus content found in main course page.", level=logging.WARNING)
+            
             return syllabus_data
-        
+            
         except requests.exceptions.RequestException as e:
-            self.logger.log_message(f"Failed to fetch syllabus page: {e}", level=logging.ERROR)
+            self.logger.log_message(f"Failed to fetch main course page for syllabus extraction: {e}", level=logging.ERROR)
             return syllabus_data
         except Exception as e:
-            self.logger.log_message(f"Error parsing syllabus page: {e}", level=logging.ERROR)
+            self.logger.log_message(f"Error extracting syllabus from main course page: {e}", level=logging.ERROR)
             return syllabus_data
 
     def run(self):
